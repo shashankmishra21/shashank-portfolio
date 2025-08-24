@@ -4,7 +4,6 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "./components/ThemeProvider";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import CursorBurst from "./components/CursorBurst";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], display: "swap", variable: "--font-display" });

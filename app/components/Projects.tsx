@@ -4,6 +4,7 @@ import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image"; // Add this import
 
 type Project = {
   title: string;
@@ -80,7 +81,8 @@ export default function Projects() {
       controls.stop();
     } else {
       controls.start({
-        x: [undefined as any, -totalWidth],
+        // Fix: Remove 'as any' and use proper type
+        x: [0, -totalWidth],
         transition: {
           x: { repeat: Infinity, repeatType: "loop", duration, ease: "linear" },
         },
@@ -155,7 +157,15 @@ export default function Projects() {
                 `}
               >
                 <div className="relative aspect-[16/10]">
-                  <img src={p.img} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
+                  {/* Fix: Replace img with Next.js Image component */}
+                  <Image
+                    src={p.img}
+                    alt={p.title}
+                    fill
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 78vw, (max-width: 1024px) 42vw, 28vw"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   {(p.category || p.year) && (
                     <>
@@ -179,7 +189,8 @@ export default function Projects() {
                   </h3>
                   <div
                     className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2"
-                    onClick={(e) => e.stopPropagation()}
+                    // Fix: Properly type the event handler
+                    onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
                   >
                     <a
                       href={p.liveDemo}

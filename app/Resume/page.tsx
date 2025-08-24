@@ -65,7 +65,7 @@ export default function Resume() {
             </h1>
 
             <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
-              Full-stack web developer with proven impact in scalable systems, modern tech stacks, and user-centered solutions. Download my latest resume or let's connect on LinkedIn.
+              Full-stack web developer with proven impact in scalable systems, modern tech stacks, and user-centered solutions. Download and connect on LinkedIn.
             </p>
           </motion.div>
 

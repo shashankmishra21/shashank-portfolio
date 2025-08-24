@@ -1,6 +1,5 @@
-// File: app/components/ThemeProvider.tsx (Updated)
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, useCallback } from "react";
 
 type Theme = "light" | "dark";
 
@@ -16,6 +15,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
+  // Fix: Use useCallback to stabilize the applyTheme function
+  const applyTheme = useCallback((newTheme: Theme) => {
+    const root = document.documentElement;
+    root.classList.remove("light", "dark");
+    root.classList.add(newTheme);
+    if (mounted) {
+      localStorage.setItem("theme", newTheme);
+    }
+  }, [mounted]); // Add mounted as dependency since it's used inside
+
   useEffect(() => {
     setMounted(true);
     
@@ -26,26 +35,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     setTheme(initialTheme);
     applyTheme(initialTheme);
-  }, []);
+  }, [applyTheme]); // Now applyTheme is stable and can be safely included
 
-  const applyTheme = (newTheme: Theme) => {
-    const root = document.documentElement;
-    root.classList.remove("light", "dark");
-    root.classList.add(newTheme);
-    if (mounted) {
-      localStorage.setItem("theme", newTheme);
-    }
-  };
-
-  const handleSetTheme = (newTheme: Theme) => {
+  const handleSetTheme = useCallback((newTheme: Theme) => {
     setTheme(newTheme);
     applyTheme(newTheme);
-  };
+  }, [applyTheme]); // Include applyTheme dependency
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     const newTheme = theme === "light" ? "dark" : "light";
     handleSetTheme(newTheme);
-  };
+  }, [theme, handleSetTheme]); // Include all dependencies
 
   // Prevent hydration mismatch by not rendering until mounted
   if (!mounted) {

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import LoadingScreen from "./LoadingScreen";
 import Hero from "./Hero";
 import About from "./About";
@@ -22,7 +22,7 @@ export default function MainApp() {
           <Hero />
           <About />
           <Experience />
-          <Projects/>
+          <Projects />
           <Contact />
         </>
       )}
