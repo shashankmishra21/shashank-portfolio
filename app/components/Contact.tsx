@@ -4,8 +4,6 @@ import { useMemo, useState } from "react";
 import {
   Mail,
   SendHorizonal,
-  Phone,
-  MapPin,
   Github,
   Linkedin,
   Twitter,
@@ -45,27 +43,6 @@ export default function Contact() {
     []
   );
 
-  const contactMethods = [
-    {
-      icon: Mail,
-      title: "Email",
-      description: "mishrashashank2106@gmail.com",
-      action: "mailto:mishrashashank2106@gmail.com",
-    },
-    {
-      icon: Phone,
-      title: "Let’s Talk",
-      description: "Schedule a quick call",
-      action: "tel:+91XXXXXXXXXX",
-    },
-    {
-      icon: MapPin,
-      title: "Location",
-      description: "Gurgaon, India",
-      action: "#",
-    },
-  ] as const;
-
   const socialLinks = [
     { icon: Github, href: "https://github.com/shashankmishra21", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com/in/shashankmishra2106", label: "LinkedIn" },
@@ -77,7 +54,7 @@ export default function Contact() {
       id="contact"
       className="relative px-4 md:px-6 py-20 md:py-28 bg-background overflow-hidden"
     >
-      {/* Ambient radial glows (match overall theme) */}
+      {/* Ambient radial glows */}
       <motion.div
         className="pointer-events-none absolute inset-0 opacity-20"
         animate={{
@@ -91,7 +68,7 @@ export default function Contact() {
         aria-hidden="true"
       />
 
-      {/* Floating particles (deterministic) */}
+      {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {particles.map((p, i) => (
           <motion.div
@@ -105,7 +82,7 @@ export default function Contact() {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Header (consistent with other sections) */}
+        {/* Header */}
         <motion.div
           className="text-center mb-14 md:mb-16"
           initial={{ opacity: 0, y: 14 }}
@@ -120,19 +97,38 @@ export default function Contact() {
             </span>
             <Sparkles className="w-5 h-5 text-blue-500" />
           </div>
+
+          {/* HEADLINE OPTIONS — pick one and keep it */}
+          {/* Option A (default): */}
           <h2 className="text-3xl md:text-5xl font-display font-extrabold tracking-tight">
             <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
-              Let’s Connect
+              Build Something Exceptional Together
             </span>
           </h2>
+
+          {/* Option B:
+          <h2 className="text-3xl md:text-5xl font-display font-extrabold tracking-tight">
+            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
+              Let’s Turn Ideas Into Impact
+            </span>
+          </h2> */}
+
+          {/* Option C:
+          <h2 className="text-3xl md:text-5xl font-display font-extrabold tracking-tight">
+            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
+              From Concept to Production—Let’s Ship
+            </span>
+          </h2> */}
+
           <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
-            Open to full‑time roles and impactful collaborations. Share a bit about your project or opportunity.
+            Open to full‑time roles and meaningful collaborations. Share a bit about your goals and
+            timeline—let’s see how I can help.
           </p>
           <div className="mt-3 h-px w-40 md:w-56 mx-auto bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Left: Form (glass card with gradient sheen) */}
+          {/* Left: Form */}
           <motion.div
             className="lg:col-span-7"
             initial={{ opacity: 0, x: -18 }}
@@ -236,7 +232,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Right: Methods + Social + Quick Stats (cohesive with rest) */}
+          {/* Right: Social + Quick Stats (Other ways removed) */}
           <motion.div
             className="lg:col-span-5 space-y-8"
             initial={{ opacity: 0, x: 18 }}
@@ -244,37 +240,6 @@ export default function Contact() {
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.6, ease: easeOut }}
           >
-            {/* Contact Methods */}
-            <div className="space-y-4">
-              <h3 className="text-xl md:text-2xl font-display font-semibold mb-4">Other Ways to Reach Me</h3>
-              {contactMethods.map((m, idx) => {
-                const Icon = m.icon;
-                return (
-                  <motion.a
-                    key={m.title}
-                    href={m.action}
-                    className="group block p-6 rounded-2xl bg-card/70 backdrop-blur-xl border border-border/50 hover:border-blue-500/30 hover:bg-blue-500/5 transition-all shadow-sm"
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    initial={{ opacity: 0, y: 14 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.35, delay: idx * 0.08, ease: easeOut }}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-xl bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors">
-                        <Icon className="w-6 h-6 text-blue-500" />
-                      </div>
-                      <div className="min-w-0">
-                        <h4 className="font-semibold text-foreground">{m.title}</h4>
-                        <p className="text-sm text-muted-foreground truncate">{m.description}</p>
-                      </div>
-                      <ArrowRight className="w-5 h-5 text-muted-foreground ml-auto group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </motion.a>
-                );
-              })}
-            </div>
-
             {/* Social Links */}
             <div className="rounded-2xl p-6 bg-card/70 backdrop-blur-xl border border-border/50">
               <h4 className="font-semibold text-lg mb-4">Follow My Journey</h4>
@@ -304,15 +269,21 @@ export default function Contact() {
 
             {/* Quick Stats */}
             <div className="rounded-2xl p-6 border border-blue-500/20 bg-gradient-to-br from-blue-500/10 to-purple-500/10">
-              <h4 className="font-semibold text-lg mb-4 text-blue-600 dark:text-blue-400">Response Time</h4>
+              <h4 className="font-semibold text-lg mb-4 text-blue-600 dark:text-blue-400">
+                Response Time
+              </h4>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Email</span>
-                  <span className="text-sm font-medium text-blue-600 dark:text-blue-400">&lt; 24 hours</span>
+                  <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                    &lt; 24 hours
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Project Inquiries</span>
-                  <span className="text-sm font-medium text-blue-600 dark:text-blue-400">&lt; 2 hours</span>
+                  <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                    &lt; 2 hours
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Availability</span>
@@ -325,7 +296,7 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        {/* Bottom CTA strip (brand-consistent) */}
+        {/* Bottom CTA strip */}
         <motion.div
           className="text-center mt-16 pt-8 border-t border-border/50"
           initial={{ opacity: 0, y: 12 }}

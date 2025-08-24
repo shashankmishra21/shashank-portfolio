@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.className} antialiased bg-background text-foreground no-x-overflow`}>
         <ThemeProvider>
           <Header />
-          <div className="h-14 sm:h-14 md:h-16 lg:h-16" />
+          {/* <div className="h-14 sm:h-14 md:h-16 lg:h-16" /> */}
           <main className="no-x-overflow">{children}</main>
           <Footer />
         </ThemeProvider>
