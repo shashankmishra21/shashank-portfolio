@@ -3,33 +3,27 @@
 @tailwind utilities;
 
 :root {
-  /* Light theme */
-  --background: 255 255 255; /* white */
-  --foreground: 10 10 10; /* near black */
-  --muted: 107 114 128; /* gray-500 */
-  --muted-foreground: 107 114 128; /* gray-500 */
-  --card: 255 255 255; /* white */
-  --card-foreground: 10 10 10; /* near black */
-  --border: 229 231 235; /* gray-200 */
-  --accent: 243 244 246; /* gray-100 */
-  --accent-foreground: 10 10 10; /* near black */
+  --background: 255 255 255;
+  --foreground: 17 24 39;
+  --muted: 243 244 246;
+  --muted-foreground: 107 114 128;
+  --card: 255 255 255;
+  --card-foreground: 17 24 39;
+  --border: 229 231 235;
+  --accent: 243 244 246;
+  --accent-foreground: 17 24 39;
 }
 
 .dark {
-  /* Dark theme */
-  --background: 10 10 10; /* near black */
-  --foreground: 250 250 250; /* near white */
-  --muted: 113 113 122; /* zinc-500 */
-  --muted-foreground: 161 161 170; /* zinc-400 */
-  --card: 10 10 10; /* near black */
-  --card-foreground: 250 250 250; /* near white */
-  --border: 39 39 42; /* zinc-800 */
-  --accent: 39 39 42; /* zinc-800 */
-  --accent-foreground: 250 250 250; /* near white */
-}
-
-* {
-  border-color: rgb(var(--border));
+  --background: 10 10 10;
+  --foreground: 250 250 250;
+  --muted: 24 24 27;
+  --muted-foreground: 161 161 170;
+  --card: 16 16 16;
+  --card-foreground: 250 250 250;
+  --border: 39 39 42;
+  --accent: 24 24 27;
+  --accent-foreground: 250 250 250;
 }
 
 body {
@@ -37,68 +31,38 @@ body {
   color: rgb(var(--foreground));
 }
 
-/* Custom classes using CSS variables */
 .bg-background { background-color: rgb(var(--background)); }
-.bg-foreground { background-color: rgb(var(--foreground)); }
-.bg-muted { background-color: rgb(var(--muted)); }
-.bg-card { background-color: rgb(var(--card)); }
-.bg-accent { background-color: rgb(var(--accent)); }
-.bg-border { background-color: rgb(var(--border)); }
-
-.text-background { color: rgb(var(--background)); }
 .text-foreground { color: rgb(var(--foreground)); }
 .text-muted-foreground { color: rgb(var(--muted-foreground)); }
-.text-card-foreground { color: rgb(var(--card-foreground)); }
+.bg-muted { background-color: rgb(var(--muted)); }
+.bg-card { background-color: rgb(var(--card)); }
+.border-border { border-color: rgb(var(--border)); }
+.bg-accent { background-color: rgb(var(--accent)); }
 .text-accent-foreground { color: rgb(var(--accent-foreground)); }
 
-.border-border { border-color: rgb(var(--border)); }
-
-/* Font families */
-.font-display {
-  font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-}
-
-/* Cursor burst animation */
-.cursor-burst {
-  position: fixed;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-}
-
-.burst-animation {
-  animation: burstEffect 0.6s ease-out forwards;
-}
-
-@keyframes burstEffect {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(0);
-  }
-  50% {
-    opacity: 0.8;
-    transform: translate(-50%, -50%) scale(1.2);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
-  }
-}
-
-/* Respect reduced motion preference */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .cursor-burst,
-  .animate-ping {
-    display: none !important;
-    animation: none !important;
-  }
-  
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms!important;
+    animation-iteration-count: 1!important;
+    transition-duration: 0.01ms!important;
   }
+}
+
+/* Prevent horizontal scroll globally */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Make media never overflow containers */
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utility to clamp any rogue element */
+.no-x-overflow {
+  overflow-x: hidden !important;
 }

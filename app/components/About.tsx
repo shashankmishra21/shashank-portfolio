@@ -1,181 +1,264 @@
 "use client";
 import { motion } from "framer-motion";
-import { MonitorSmartphone, Server, Database, Cloud, CircuitBoard } from "lucide-react";
+import { useMemo } from "react";
+import { Code2, Server, Cloud, Wrench, Target, Rocket, Gauge, Layers } from "lucide-react";
 
-const fadeUp = {
-  initial: { opacity: 0, y: 14 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.25 },
-  transition: { duration: 0.45, ease: "easeOut" },
-};
+const easeOut = [0.16, 1, 0.3, 1] as const;
+
+type Stat = { label: string; value: string; hint?: string };
+type Skill = { name: string; level: number };
+type Section = { title: string; icon: React.ElementType; items: Skill[] };
 
 export default function About() {
-  return (
-    <section id="about" className="py-16 md:py-20 px-4 md:px-6 bg-background relative overflow-hidden">
-      {/* Subtle animated background */}
-      <motion.div
-        className="absolute inset-0 opacity-15 pointer-events-none"
-        animate={{
-          background: [
-            "radial-gradient(circle at 20% 50%, rgba(59,130,246,0.12) 0%, transparent 50%)",
-            "radial-gradient(circle at 80% 30%, rgba(139,92,246,0.12) 0%, transparent 50%)",
-            "radial-gradient(circle at 40% 80%, rgba(59,130,246,0.12) 0%, transparent 50%)",
-          ],
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-      />
+  const stats: Stat[] = useMemo(
+    () => [
+      { label: "Years Experience", value: "2+", hint: "Hands-on production work" },
+      { label: "Projects Delivered", value: "6+", hint: "SaaS, eLearning, Portfolio" },
+      { label: "Internships", value: "3", hint: "Backend + Full‑stack" },
+      { label: "CPI", value: "8.9", hint: "Consistently high" },
+    ],
+    []
+  );
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Header */}
-        <motion.div className="text-center mb-8 md:mb-10" {...fadeUp}>
-          <h2 className="text-2xl md:text-4xl font-display font-bold tracking-tight">
-            About <span className="text-blue-500">Me</span>
+  const sections: Section[] = useMemo(
+    () => [
+      {
+        title: "Frontend Engineering",
+        icon: Code2,
+        items: [
+          { name: "React", level: 90 },
+          { name: "Next.js", level: 85 },
+          { name: "TypeScript", level: 85 },
+          { name: "Tailwind CSS", level: 95 },
+        ],
+      },
+      {
+        title: "Backend & APIs",
+        icon: Server,
+        items: [
+          { name: "Node.js", level: 85 },
+          { name: "Express.js", level: 80 },
+          { name: "Python", level: 75 },
+          { name: "Django", level: 70 },
+        ],
+      },
+      {
+        title: "Cloud & Databases",
+        icon: Cloud,
+        items: [
+          { name: "MongoDB", level: 85 },
+          { name: "PostgreSQL", level: 80 },
+          { name: "AWS", level: 70 },
+          { name: "Docker", level: 75 },
+        ],
+      },
+      {
+        title: "DevOps & Tooling",
+        icon: Wrench,
+        items: [
+          { name: "Git", level: 90 },
+          { name: "CI/CD", level: 75 },
+          { name: "Linux", level: 80 },
+          { name: "Nginx", level: 70 },
+        ],
+      },
+    ],
+    []
+  );
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.08 } },
+  };
+
+  const card = {
+    hidden: { opacity: 0, y: 18 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.45, ease: easeOut },
+    },
+  };
+
+  return (
+    <section id="about" className="relative bg-background">
+      {/* Ambient background accents */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-24 -left-16 h-56 w-56 rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute -bottom-20 -right-10 h-64 w-64 rounded-full bg-purple-500/10 blur-3xl" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-5 md:px-6 py-16 md:py-20">
+        {/* Title */}
+        <motion.div
+          className="text-center mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: easeOut }}
+        >
+          <p className="text-xs md:text-sm tracking-widest text-blue-500/80 font-semibold uppercase">
+            About
+          </p>
+          <h2 className="mt-2 text-3xl md:text-5xl font-display font-extrabold tracking-tight">
+            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
+              Builder of Scalable, Thoughtful Software
+            </span>
           </h2>
-          <div className="h-px w-12 md:w-20 bg-blue-500/60 mx-auto mt-3" />
+          <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
+            Product‑minded full stack developer crafting clean, performant systems with precise attention to UX and reliability.
+          </p>
         </motion.div>
 
-        {/* Grid: stacked on mobile, two-column on md+ */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
-          {/* Left: content */}
-          <motion.div className="md:col-span-7 lg:col-span-8" {...fadeUp}>
-            <div className="space-y-4 md:space-y-5">
-              <p className="text-[13.5px] md:text-[15px] text-muted-foreground">
-                Hi, I'm <span className="text-foreground font-semibold">Shashank Mishra</span> — Full Stack Developer | Backend Engineer | DevOps Practitioner | Web3 Learner.
-              </p>
-
-              <p className="text-[13.5px] md:text-[15px] text-muted-foreground">
-                I'm a final-year Computer Science student and a Backend Intern at a Gurgaon-based startup, contributing to backend systems. I build scalable, user-friendly applications across frontend, backend, databases, and DevOps (AWS, CI/CD, Docker), while learning Web3 fundamentals.
-              </p>
-
-              <div className="h-px bg-border" />
-
-              {/* Skills categories with compact chips */}
-              <div>
-                <h4 className="text-base md:text-xl font-display font-semibold mb-3">I specialize in:</h4>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="bg-card/60 border border-border rounded-lg p-3 md:p-4">
-                    <div className="flex items-center gap-2.5 mb-2">
-                      <MonitorSmartphone className="w-4 h-4 md:w-5 md:h-5 text-blue-500" />
-                      <span className="text-sm md:text-base font-medium">Frontend</span>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5 md:gap-2">
-                      {["React.js", "Next.js", "Bootstrap", "Tailwind CSS"].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded-full text-[11px] md:text-xs bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="bg-card/60 border border-border rounded-lg p-3 md:p-4">
-                    <div className="flex items-center gap-2.5 mb-2">
-                      <Server className="w-4 h-4 md:w-5 md:h-5 text-emerald-500" />
-                      <span className="text-sm md:text-base font-medium">Backend</span>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5 md:gap-2">
-                      {["Node.js", "Express.js", "Django"].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded-full text-[11px] md:text-xs bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="bg-card/60 border border-border rounded-lg p-3 md:p-4">
-                    <div className="flex items-center gap-2.5 mb-2">
-                      <Database className="w-4 h-4 md:w-5 md:h-5 text-amber-500" />
-                      <span className="text-sm md:text-base font-medium">Databases</span>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5 md:gap-2">
-                      {["MongoDB", "PostgreSQL"].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded-full text-[11px] md:text-xs bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="bg-card/60 border border-border rounded-lg p-3 md:p-4">
-                    <div className="flex items-center gap-2.5 mb-2">
-                      <Cloud className="w-4 h-4 md:w-5 md:h-5 text-purple-500" />
-                      <span className="text-sm md:text-base font-medium">DevOps</span>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5 md:gap-2">
-                      {["AWS", "CI/CD pipelines", "Docker"].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded-full text-[11px] md:text-xs bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="bg-card/60 border border-border rounded-lg p-3 md:p-4 sm:col-span-2">
-                    <div className="flex items-center gap-2.5 mb-2">
-                      <CircuitBoard className="w-4 h-4 md:w-5 md:h-5 text-cyan-500" />
-                      <span className="text-sm md:text-base font-medium">Web3</span>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5 md:gap-2">
-                      {["Blockchain fundamentals", "Smart Contracts (Learning)"].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded-full text-[11px] md:text-xs bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+        {/* Credibility and Principles (No image) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
+          {/* Credibility stats */}
+          <motion.div
+            className="md:col-span-2 grid grid-cols-2 sm:grid-cols-4 gap-4"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            {stats.map((s) => (
+              <motion.div
+                key={s.label}
+                variants={card}
+                className="rounded-2xl bg-card/80 border border-border p-5 text-center shadow-sm hover:shadow-lg transition-shadow"
+              >
+                <div className="text-3xl md:text-4xl font-display font-extrabold text-foreground tracking-tight">
+                  {s.value}
                 </div>
-              </div>
-
-              <p className="text-[13.5px] md:text-[15px] text-muted-foreground">
-                Beyond development, I'm sharpening DSA via Striver A2Z, LeetCode, and my <span className="text-foreground font-medium">#200DaysOfGrindingDSA</span> challenge.
-              </p>
-
-              <p className="text-[13.5px] md:text-[15px] text-muted-foreground">
-                🚀 Goal: grow as a versatile engineer across frontend, backend, cloud, and blockchain.
-              </p>
-            </div>
+                <div className="text-xs md:text-sm text-muted-foreground mt-1">{s.label}</div>
+                {s.hint && (
+                  <div className="mt-1 text-[11px] text-muted-foreground/80">{s.hint}</div>
+                )}
+              </motion.div>
+            ))}
           </motion.div>
 
-          {/* Right: highlights (compact on mobile) */}
-          <motion.aside className="md:col-span-5 lg:col-span-4" {...fadeUp} transition={{ duration: 0.45, delay: 0.06 }}>
-            <div className="bg-card/70 border border-border rounded-xl p-4 md:p-6 h-full flex flex-col gap-4 md:gap-5">
-              <div className="text-[13px] md:text-sm text-muted-foreground">
-                Clean architectures, product thinking, and delivery excellence.
-              </div>
-              <div className="h-px bg-border" />
-              <div className="text-[13px] md:text-sm text-muted-foreground">
-                Comfortable across UI, APIs, DBs, and infra automation.
-              </div>
-              <div className="h-px bg-border" />
-              <div className="text-[13px] md:text-sm text-muted-foreground">
-                Hands-on with AWS, CI/CD, Docker for robust workflows.
-              </div>
-              <div className="h-px bg-border" />
-              <div className="text-[13px] md:text-sm text-muted-foreground">
-                Learning blockchain to align with emerging tech.
-              </div>
-            </div>
-          </motion.aside>
+          {/* Principles / Highlights */}
+          <motion.div
+            className="rounded-2xl bg-card/80 border border-border p-6 shadow-sm"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, ease: easeOut }}
+          >
+            <h3 className="text-base md:text-lg font-display font-semibold mb-4">
+              Principles I work by
+            </h3>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <Target className="w-4 h-4 text-blue-500 mt-0.5" />
+                Ship with intent — measure impact, iterate quickly, and keep the bar high.
+              </li>
+              <li className="flex items-start gap-2">
+                <Layers className="w-4 h-4 text-indigo-500 mt-0.5" />
+                Design for change — clean abstractions, clear boundaries, maintainable code.
+              </li>
+              <li className="flex items-start gap-2">
+                <Gauge className="w-4 h-4 text-purple-500 mt-0.5" />
+                Performance first — fast APIs, optimized queries, smooth UI.
+              </li>
+              <li className="flex items-start gap-2">
+                <Rocket className="w-4 h-4 text-blue-400 mt-0.5" />
+                Ownership mindset — from architecture to deployment and observability.
+              </li>
+            </ul>
+          </motion.div>
         </div>
 
-        {/* Stats row */}
+        {/* Core bio */}
         <motion.div
-          className="grid grid-cols-3 gap-4 md:gap-8 mt-8 md:mt-12 pt-5 border-t border-border"
-          {...fadeUp}
-          transition={{ duration: 0.4, delay: 0.08 }}
+          className="rounded-2xl bg-card/80 border border-border p-6 md:p-7 shadow-sm mb-12"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: easeOut }}
         >
-          <div className="text-center">
-            <div className="text-xl md:text-3xl font-bold text-blue-500">8.9</div>
-            <div className="text-[11px] md:text-sm text-muted-foreground">CPI</div>
-          </div>
-          <div className="text-center">
-            <div className="text-xl md:text-3xl font-bold text-blue-500">6+</div>
-            <div className="text-[11px] md:text-sm text-muted-foreground">Projects</div>
-          </div>
-          <div className="text-center">
-            <div className="text-xl md:text-3xl font-bold text-blue-500">2</div>
-            <div className="text-[11px] md:text-sm text-muted-foreground">Internships</div>
-          </div>
+          <p className="text-base md:text-lg text-foreground font-medium leading-relaxed">
+            I engineer reliable systems end‑to‑end: from clean APIs and efficient data models to polished, high‑performance interfaces.
+            I focus on shipping with intent—clear architecture, thoughtful abstractions, and a bias for measurable impact.
+          </p>
+          <p className="mt-3 text-sm md:text-base text-muted-foreground">
+            Recent work: a link management SaaS (analytics, auth, teams), an eLearning platform (streaming, progress, payments),
+            and a fast, animated portfolio. Tooling: React/Next.js, Node/Express, MongoDB/Postgres, Docker/AWS, CI/CD.
+          </p>
+        </motion.div>
+
+        {/* Skill stacks */}
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-7"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {sections.map((sec, sIndex) => (
+            <motion.div
+              key={sec.title}
+              variants={card}
+              className="rounded-2xl p-6 md:p-7 bg-card/80 border border-border shadow-sm hover:shadow-xl transition-shadow"
+            >
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-2">
+                  <sec.icon className="w-5 h-5 text-blue-500" />
+                  <h4 className="text-lg md:text-xl font-display font-semibold">{sec.title}</h4>
+                </div>
+                <span className="text-xs md:text-sm px-2.5 py-1 rounded-full bg-muted text-muted-foreground">
+                  {sec.items.length} skills
+                </span>
+              </div>
+
+              <div className="space-y-4">
+                {sec.items.map((skill, i) => {
+                  const delay = sIndex * 0.05 + i * 0.05;
+                  return (
+                    <motion.div
+                      key={`${sec.title}-${skill.name}`}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.35, delay, ease: easeOut }}
+                    >
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="text-sm md:text-base font-medium text-foreground">
+                          {skill.name}
+                        </span>
+                        <span className="text-[11px] md:text-xs text-muted-foreground">
+                          {skill.level}%
+                        </span>
+                      </div>
+
+                      <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
+                        <motion.div
+                          className="h-2 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600"
+                          initial={{ width: "0%" }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, delay: delay + 0.15, ease: easeOut }}
+                        />
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Closing line */}
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          <p className="text-xs md:text-sm text-muted-foreground">
+            Available for full‑time roles and impactful collaborations.
+          </p>
         </motion.div>
       </div>
     </section>

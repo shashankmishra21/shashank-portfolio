@@ -1,162 +1,130 @@
 "use client";
 import { motion } from "framer-motion";
-// Import Header if you want a separate header only on this page, else remove below line
-// import Header from "@/components/Header";
+import Link from "next/link";
+import { Mail, Github, Linkedin, X } from "lucide-react";
 
-export default function Skills() {
-  const skillCategories = [
+const easeOut = [0.16, 1, 0.3, 1] as const;
+
+export default function Footer() {
+  const socials = [
     {
-      title: "Frontend Development",
-      icon: "🎨",
-      skills: [
-        { name: "React.js", level: 90 },
-        { name: "TypeScript", level: 85 },
-        { name: "Next.js", level: 80 },
-        { name: "Tailwind CSS", level: 95 },
-        { name: "Vue.js", level: 75 },
-        { name: "JavaScript", level: 90 },
-      ],
+      href: "mailto:mishrashashank2106@gmail.com",
+      label: "Email",
+      icon: Mail,
+      classes:
+        "bg-white hover:bg-red-50 text-[#EA4335] border-neutral-300 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-rose-400 dark:border-white/10",
     },
     {
-      title: "Backend Development",
-      icon: "⚙️",
-      skills: [
-        { name: "Node.js", level: 85 },
-        { name: "Express.js", level: 80 },
-        { name: "Python", level: 75 },
-        { name: "Django", level: 70 },
-        { name: "REST APIs", level: 90 },
-        { name: "GraphQL", level: 65 },
-      ],
+      href: "https://github.com/shashankmishra21",
+      label: "GitHub",
+      icon: Github,
+      classes:
+        "bg-white hover:bg-neutral-50 text-neutral-900 border-neutral-300 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-white dark:border-white/10",
     },
     {
-      title: "Database & Cloud",
-      icon: "☁️",
-      skills: [
-        { name: "MongoDB", level: 85 },
-        { name: "PostgreSQL", level: 80 },
-        { name: "Firebase", level: 85 },
-        { name: "AWS", level: 70 },
-        { name: "Docker", level: 75 },
-        { name: "Supabase", level: 80 },
-      ],
+      href: "https://linkedin.com/in/shashankmishra2106",
+      label: "LinkedIn",
+      icon: Linkedin,
+      classes:
+        "bg-white hover:bg-blue-50 text-[#0A66C2] border-neutral-300 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-blue-400 dark:border-white/10",
     },
     {
-      title: "DevOps & Tools",
-      icon: "🔧",
-      skills: [
-        { name: "Git", level: 90 },
-        { name: "CI/CD", level: 75 },
-        { name: "Linux", level: 80 },
-        { name: "Nginx", level: 70 },
-        { name: "Kubernetes", level: 60 },
-        { name: "Monitoring", level: 65 },
-      ],
+      href: "https://x.com/mishrashashank_",
+      label: "X",
+      icon: X,
+      classes:
+        "bg-white hover:bg-neutral-50 text-neutral-900 border-neutral-300 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-white dark:border-white/10",
     },
   ];
 
-  const container = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.08 } },
-  };
-
-  const card = {
-    hidden: { opacity: 0, y: 18 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
-  };
+  const year = new Date().getFullYear();
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* <Header /> If desired */}
-      <section className="pt-24 md:pt-28 pb-16 md:pb-20 px-5 md:px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="text-center mb-10 md:mb-12"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <h1 className="text-3xl md:text-4xl font-display font-bold mb-3">
-              My <span className="text-blue-500">Skills</span>
-            </h1>
-            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
-              Technologies and tools used to build robust, scalable, and user-centric software.
+    <footer className="relative mt-16 bg-background border-t border-border overflow-hidden">
+      {/* Ambient gradient glows */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 opacity-20"
+        animate={{
+          background: [
+            "radial-gradient(60% 60% at 20% 60%, rgba(59,130,246,0.12), transparent 60%)",
+            "radial-gradient(60% 60% at 80% 30%, rgba(139,92,246,0.12), transparent 60%)",
+            "radial-gradient(60% 60% at 40% 80%, rgba(59,130,246,0.12), transparent 60%)",
+          ],
+        }}
+        transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+        aria-hidden="true"
+      />
+
+      <div className="relative max-w-6xl mx-auto px-5 md:px-6 py-12 md:py-16">
+        {/* Brand row */}
+        <div className="flex flex-col items-center gap-4">
+          <Link href="/" className="inline-flex items-center gap-2" aria-label="Home">
+            <span
+              className="text-2xl md:text-3xl font-extrabold tracking-tight"
+              style={{
+                fontFamily:
+                  'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+              }}
+            >
+              <span className="text-foreground">Shashank </span>
+              <span className="text-blue-600 dark:text-blue-500">Mishra</span>
+              <span className="text-blue-600 dark:text-blue-500">·</span>
+            </span>
+          </Link>
+
+        {/* Tagline with subtle gradient underline */}
+          <div className="text-center">
+            <p className="text-sm md:text-base text-muted-foreground">
+              Full Stack Developer • Backend Engineer • DevOps Practitioner
             </p>
-          </motion.div>
-          <motion.div
-            className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-7"
-            variants={container}
-            initial="hidden"
-            animate="show"
-          >
-            {skillCategories.map((category, categoryIndex) => (
-              <motion.div
-                key={category.title}
-                variants={card}
-                className="relative rounded-2xl p-6 md:p-7 bg-card/80 backdrop-blur border border-border shadow-sm hover:shadow-xl transition-all"
-              >
-                <div className="flex items-center justify-between mb-5">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl md:text-3xl">{category.icon}</span>
-                    <h3 className="text-lg md:text-xl font-display font-semibold text-foreground">{category.title}</h3>
-                  </div>
-                  <span className="text-xs md:text-sm px-2.5 py-1 rounded-full bg-muted text-muted-foreground">
-                    {category.skills.length} skills
-                  </span>
-                </div>
-                <div className="h-px bg-border mb-5" />
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => {
-                    const delay = categoryIndex * 0.05 + skillIndex * 0.05;
-                    return (
-                      <motion.div
-                        key={`${category.title}-${skill.name}`}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.35, delay }}
-                      >
-                        <div className="flex items-center justify-between mb-1.5">
-                          <span className="text-sm md:text-base font-medium text-foreground">{skill.name}</span>
-                          <span className="text-[11px] md:text-xs text-muted-foreground">{skill.level}%</span>
-                        </div>
-                        <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
-                          <motion.div
-                            className="h-2 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: delay + 0.15, ease: "easeOut" }}
-                          />
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-          <motion.div
-            className="text-center mt-10 text-xs md:text-sm text-muted-foreground"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-          >
-            Continuously learning and refining — from system design to deployment pipelines.
-          </motion.div>
+            <div className="mt-2 h-px w-40 md:w-56 mx-auto bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+          </div>
         </div>
-      </section>
-      <style jsx global>{`
-        @media (prefers-reduced-motion: reduce) {
-          html:focus-within {
-            scroll-behavior: auto !important;
-          }
-          [style*="transform"] {
-            transform: none !important;
-          }
-        }
-      `}</style>
-    </div>
+
+        {/* Socials with premium hover */}
+        <div className="mt-7 flex items-center justify-center gap-3 sm:gap-4">
+          {socials.map((s, i) => (
+            <motion.a
+              key={s.label}
+              href={s.href}
+              target={s.href.startsWith("mailto:") ? undefined : "_blank"}
+              rel={s.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+              aria-label={s.label}
+              className={`
+                w-10 h-10 sm:w-11 sm:h-11 rounded-md grid place-items-center
+                border transition-colors ${s.classes}
+                shadow-[0_6px_20px_-10px_rgba(59,130,246,0.35)]
+              `}
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.25, delay: 0.08 + i * 0.06, ease: easeOut }}
+              whileHover={{
+                y: -2,
+                scale: 1.05,
+                boxShadow: "0 16px 40px -12px rgba(59,130,246,0.45)",
+                transition: { duration: 0.18, ease: easeOut },
+              }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <s.icon className="w-5 h-5" />
+            </motion.a>
+          ))}
+        </div>
+
+        {/* Gradient divider */}
+        <div className="mt-10 mb-6 h-px w-full bg-gradient-to-r from-transparent via-border to-transparent" />
+
+        {/* Bottom lines */}
+        <div className="text-center space-y-1.5">
+          <p className="text-xs md:text-sm text-foreground/90">
+            Built with care and intent by Shashank
+          </p>
+          <p className="text-xs md:text-sm text-muted-foreground">
+            © {year} Shashank Mishra • All rights reserved
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 }

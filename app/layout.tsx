@@ -1,48 +1,37 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Inter, Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "./components/ThemeProvider";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CursorBurst from "./components/CursorBurst";
 
+const inter = Inter({ subsets: ["latin"], display: "swap" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], display: "swap", variable: "--font-display" });
+
 export const metadata: Metadata = {
   title: "Shashank Mishra — Full Stack Developer",
-  description: "Portfolio of Shashank Mishra: Full Stack Developer, Backend Engineer, DevOps Practitioner",
-  keywords: "Full Stack Developer, Backend Engineer, DevOps, React, Next.js, Node.js, TypeScript",
+  description: "Full Stack Developer | Backend Engineer | DevOps Practitioner",
+  keywords: ["Full Stack Developer", "Backend", "DevOps", "React", "Next.js", "Node.js", "TypeScript"],
   authors: [{ name: "Shashank Mishra" }],
   creator: "Shashank Mishra",
   openGraph: {
     title: "Shashank Mishra — Full Stack Developer",
-    description: "Full Stack Developer | Backend Engineer | DevOps Practitioner",
+    description: "Product-minded full stack developer focused on scalable systems.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Shashank Mishra — Full Stack Developer",
-    description: "Full Stack Developer | Backend Engineer | DevOps Practitioner",
-    creator: "@mishrashashank_",
+    description: "Product-minded full stack developer focused on scalable systems.",
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={spaceGrotesk.variable}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -52,7 +41,6 @@ export default function RootLayout({
                     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
                   document.documentElement.classList.add(theme);
                 } catch (e) {
-                  // Fallback to light theme if localStorage is not available
                   document.documentElement.classList.add('light');
                 }
               })();
@@ -60,16 +48,15 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans antialiased bg-background text-foreground">
+      <body className={`${inter.className} antialiased bg-background text-foreground no-x-overflow`}>
         <ThemeProvider>
-          <CursorBurst />
           <Header />
-          <main>
-            {children}
-          </main>
+          <div className="h-14 sm:h-14 md:h-16 lg:h-16" />
+          <main className="no-x-overflow">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
+
     </html>
   );
 }
