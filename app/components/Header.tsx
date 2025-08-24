@@ -106,8 +106,8 @@ export default function Header() {
                     }}
                   >
                     <span className="text-foreground">Shashank </span>
-                    <span className="text-blue-600 dark:text-blue-500">Mishra</span>
-                    <span className="text-blue-600 dark:text-blue-500">·</span>
+                    <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">Mishra·</span>
+                    {/* <span className="text-blue-600 dark:text-blue-500">·</span> */}
                   </span>
                 </Link>
               </motion.div>
@@ -185,7 +185,7 @@ export default function Header() {
       {/* Small-screen top bar — only on Home, brand + theme, non-sticky */}
       {pathname === "/" && (
         <header className="md:hidden">
-          <div className="w-full px-4 sm:px-5 py-4 bg-background/90 backdrop-blur-xl border-b border-border flex items-center justify-between">
+          <div className="w-full px-4 sm:px-5 py-2 bg-background/90 backdrop-blur-xl border-b border-border flex items-center justify-between">
             {/* Compact brand: SM. */}
             <Link href="/" className="inline-flex items-center" aria-label="Home">
               <span
@@ -195,16 +195,18 @@ export default function Header() {
                     'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
                 }}
               >
-                <span className="text-foreground">S</span>
-                <span className="text-blue-600 dark:text-blue-500">M</span>
-                <span className="text-blue-600 dark:text-blue-500">.</span>
+                <h3>
+                  <span className="text-foreground">S</span>
+                  <span className="text-blue-600 dark:text-blue-500">M</span>
+                  <span className="text-blue-600 dark:text-blue-500">.</span>
+                </h3>
               </span>
             </Link>
 
             {/* Theme toggle */}
             <button
               onClick={toggleDarkMode}
-              className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-accent/60 backdrop-blur-sm border border-border/50 text-foreground hover:bg-accent transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
+              className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-accent/60 backdrop-blur-sm text-foreground hover:bg-accent transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
               aria-label="Toggle theme"
               title="Toggle theme"
             >
@@ -232,7 +234,8 @@ export default function Header() {
           <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-500/10 via-indigo-500/10 to-purple-500/10" />
 
           {/* Tabs row */}
-          <ul className="relative flex items-center gap-1.5">
+          {/* Tabs row */}
+          <ul className="relative flex items-center gap-1">
             {[
               { href: "/", icon: Home, label: "Home" },
               { href: "/projects", icon: Code, label: "Projects" },
@@ -248,7 +251,7 @@ export default function Header() {
                     aria-label={item.label}
                     className={[
                       "relative group inline-flex items-center justify-center",
-                      "size-12 rounded-xl transition-all",
+                      "size-10 rounded-xl transition-all",
                       active
                         ? "text-blue-600 dark:text-blue-400"
                         : "text-muted-foreground hover:text-foreground",
@@ -258,10 +261,10 @@ export default function Header() {
                     {active && (
                       <span
                         className="
-                          absolute inset-0 rounded-xl
-                          bg-blue-500/12 border border-blue-500/20
-                          shadow-[0_10px_20px_-10px_rgba(59,130,246,0.6)]
-                        "
+                absolute inset-0 rounded-xl
+                bg-blue-500/10 border border-blue-500/20
+                shadow-[0_8px_18px_-10px_rgba(59,130,246,0.55)]
+              "
                       />
                     )}
 
@@ -271,17 +274,17 @@ export default function Header() {
                         "relative z-10 transition-transform duration-150",
                         active ? "scale-110" : "group-active:scale-95",
                       ].join(" ")}
-                      size={22}
+                      size={20}
                     />
 
                     {/* Under-glow dot on active */}
                     {active && (
                       <span
                         className="
-                          absolute -bottom-1 h-1.5 w-1.5 rounded-full
-                          bg-gradient-to-r from-blue-500 to-indigo-500
-                          shadow-[0_0_10px_2px_rgba(59,130,246,0.6)]
-                        "
+                absolute -bottom-1 h-1.5 w-1.5 rounded-full
+                bg-gradient-to-r from-blue-500 to-indigo-500
+                shadow-[0_0_9px_2px_rgba(59,130,246,0.55)]
+              "
                       />
                     )}
                   </Link>
@@ -293,10 +296,21 @@ export default function Header() {
           {/* Subtle top notch effect */}
           <div
             className="
-              pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2
-              h-2 w-24 rounded-b-2xl
-              bg-gradient-to-b from-white/10 to-transparent
-            "
+    pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2
+    h-2 w-20 rounded-b-2xl
+    bg-gradient-to-b from-white/10 to-transparent
+  "
+          />
+
+
+          {/* Subtle top notch effect */}
+          {/* Subtle top notch effect */}
+          <div
+            className="
+    pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2
+    h-2 w-20 rounded-b-2xl
+    bg-gradient-to-b from-white/10 to-transparent
+  "
           />
         </div>
       </nav>

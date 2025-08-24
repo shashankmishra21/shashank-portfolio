@@ -12,8 +12,8 @@ type Section = { title: string; icon: React.ElementType; items: Skill[] };
 export default function About() {
   const stats: Stat[] = useMemo(
     () => [
-      { label: "Years Experience", value: "2+", hint: "Hands-on production work" },
-      { label: "Projects Delivered", value: "6+", hint: "SaaS, eLearning, Portfolio" },
+      { label: "Years Experience", value: "1.5+", hint: "Hands-on production work" },
+      { label: "Projects Delivered", value: "6+", hint: "Finance, eLearning, Portfolio" },
       { label: "Internships", value: "3", hint: "Backend + Full‑stack" },
       { label: "CPI", value: "8.9", hint: "Consistently high" },
     ],
@@ -177,13 +177,12 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: easeOut }}
         >
-          <p className="text-base md:text-lg text-foreground font-medium leading-relaxed">
+          {/* <p className="text-base md:text-lg text-foreground font-medium leading-relaxed">
             I engineer reliable systems end‑to‑end: from clean APIs and efficient data models to polished, high‑performance interfaces.
             I focus on shipping with intent—clear architecture, thoughtful abstractions, and a bias for measurable impact.
-          </p>
-          <p className="mt-3 text-sm md:text-base text-muted-foreground">
-            Recent work: a link management SaaS (analytics, auth, teams), an eLearning platform (streaming, progress, payments),
-            and a fast, animated portfolio. Tooling: React/Next.js, Node/Express, MongoDB/Postgres, Docker/AWS, CI/CD.
+          </p> */}
+          <p className="mt-0 text-sm md:text-base text-muted-foreground">
+            I design and build reliable, end-to-end systems with a focus on clarity, efficiency, and impact. I enjoy turning complex problems into intuitive experiences, crafting thoughtful architectures, and delivering solutions that make a real difference. My approach balances precision with creativity, ensuring that every feature and interaction is purposeful and meaningful.
           </p>
         </motion.div>
 

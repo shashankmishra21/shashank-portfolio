@@ -6,63 +6,59 @@ interface LoadingScreenProps {
   onLoadingComplete: () => void;
 }
 
-const DURATION_MS = 3200; // total loading time (ms)
-const EXIT_FADE_MS = 600; // fade-out after complete
+const DURATION_MS = 2800; // total loading time
+const EXIT_FADE_MS = 500;
 const easeOut = [0.16, 1, 0.3, 1] as const;
 
 const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [visible, setVisible] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [messageIndex, setMessageIndex] = useState(0);
+  const [msgIdx, setMsgIdx] = useState(0);
 
-  // Professional dev messages with more impact
+  // Tighter, product-minded copy
   const messages = useMemo(
     () => [
-      "Initializing systems...",
-      "Compiling components...",
-      "Loading databases...",
-      "Establishing connections...",
-      "Optimizing performance...",
-      "Ready to deploy...",
+      "Bootstrapping runtime…",
+      "Warming APIs…",
+      "Hydrating UI…",
+      "Linking services…",
+      "Optimizing bundles…",
+      "Almost there…",
     ],
     []
   );
 
   useEffect(() => {
-    // Progress animation (time-based, smooth)
     const start = performance.now();
     let rafId = 0;
 
     const tick = (t: number) => {
-      const elapsed = t - start;
-      const pct = Math.min(100, Math.floor((elapsed / DURATION_MS) * 100));
+      const pct = Math.min(100, Math.floor(((t - start) / DURATION_MS) * 100));
       setProgress(pct);
       if (pct < 100) rafId = requestAnimationFrame(tick);
     };
     rafId = requestAnimationFrame(tick);
 
-    // Messages rotation
-    const step = Math.max(700, Math.floor(DURATION_MS / messages.length));
+    const step = Math.max(500, Math.floor(DURATION_MS / messages.length));
     const timers: number[] = [];
     for (let i = 1; i < messages.length; i++) {
-      timers.push(window.setTimeout(() => setMessageIndex(i), i * step));
+      timers.push(window.setTimeout(() => setMsgIdx(i), i * step));
     }
 
-    // Complete sequence
-    const completeTimer = window.setTimeout(() => {
-      setIsVisible(false);
+    const complete = window.setTimeout(() => {
+      setVisible(false);
       window.setTimeout(onLoadingComplete, EXIT_FADE_MS);
     }, DURATION_MS + 50);
 
     return () => {
       cancelAnimationFrame(rafId);
       timers.forEach(clearTimeout);
-      clearTimeout(completeTimer);
+      clearTimeout(complete);
     };
   }, [messages.length, onLoadingComplete]);
 
-  // Exit fade
-  if (!isVisible) {
+  // Exit animation
+  if (!visible) {
     return (
       <motion.div
         className="fixed inset-0 z-[9999] bg-black"
@@ -80,316 +76,208 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      aria-label="Loading screen"
       role="dialog"
       aria-modal="true"
+      aria-label="Loading screen"
     >
-      {/* Matrix-style animated background */}
+      {/* Ambient layers: grid + vertical scan */}
       <div className="absolute inset-0">
-        {/* Animated grid lines */}
         <motion.div
-          className="absolute inset-0 opacity-[0.15]"
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%"],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          className="absolute inset-0 opacity-20"
+          animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
           style={{
             backgroundImage: `
-              linear-gradient(90deg, rgba(0, 255, 255, 0.3) 1px, transparent 1px),
-              linear-gradient(0deg, rgba(0, 255, 255, 0.2) 1px, transparent 1px),
-              linear-gradient(45deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+              linear-gradient(90deg, rgba(59,130,246,0.18) 1px, transparent 1px),
+              linear-gradient(0deg, rgba(99,102,241,0.14) 1px, transparent 1px)
             `,
-            backgroundSize: "60px 60px, 60px 60px, 40px 40px",
+            backgroundSize: "50px 50px, 50px 50px",
           }}
+          aria-hidden="true"
         />
-
-        {/* Scanning lines effect */}
         <motion.div
           className="absolute inset-0"
           animate={{ backgroundPosition: ["0% 0%", "0% 100%"] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "linear" }}
           style={{
             backgroundImage: `
-              linear-gradient(180deg, 
-                transparent 0%, 
-                rgba(0, 255, 255, 0.1) 2%, 
-                rgba(0, 255, 255, 0.3) 3%, 
-                rgba(0, 255, 255, 0.1) 4%, 
+              linear-gradient(180deg,
+                transparent 0%,
+                rgba(59,130,246,0.08) 2%,
+                rgba(59,130,246,0.22) 3%,
+                rgba(59,130,246,0.08) 4%,
                 transparent 6%
               )
             `,
-            backgroundSize: "100% 200px",
+            backgroundSize: "100% 220px",
+            opacity: 0.6,
           }}
+          aria-hidden="true"
         />
       </div>
 
-      {/* Floating code elements (deterministic) */}
-      {Array.from({ length: 12 }).map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute text-cyan-400/30 font-mono text-xs select-none"
-          style={{
-            left: `${(i * 127) % 90 + 5}%`,
-            top: `${(i * 89) % 80 + 10}%`,
-            transform: `rotate(${(i * 23) % 360}deg)`,
-          }}
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.3, 0.8, 0.3],
-            rotate: [(i * 23) % 360, ((i * 23) % 360) + 360],
-          }}
-          transition={{
-            duration: 4 + i * 0.5,
-            repeat: Infinity,
-            ease: easeOut,
-            delay: i * 0.2,
-          }}
-          aria-hidden="true"
-        >
-          {["{ }", "< />", "[ ]", "()", "=>", "&&", "||", "!="][i % 8]}
-        </motion.div>
-      ))}
-
-      {/* Central terminal panel */}
+      {/* Center panel */}
       <div className="relative w-full h-full flex items-center justify-center p-4">
         <motion.div
           className="
-            relative w-[min(95vw,1000px)] 
+            relative w-[min(96vw,980px)]
+            rounded-2xl overflow-hidden
             bg-gradient-to-br from-gray-900 via-black to-gray-900
-            border-2 border-cyan-400/30
-            rounded-2xl
-            shadow-[0_0_60px_rgba(6,182,212,0.4)]
-            backdrop-blur-sm
-            overflow-hidden
+            border border-blue-500/25
+            shadow-[0_0_60px_rgba(59,130,246,0.35)]
+            backdrop-blur-md
           "
-          initial={{ scale: 0.9, opacity: 0, y: 50 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: easeOut }}
+          initial={{ opacity: 0, y: 28, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, ease: easeOut }}
         >
-          {/* Terminal header bar */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-cyan-400/20 bg-gray-800/50">
-            <div className="flex items-center space-x-3">
-              <div className="flex space-x-2">
-                <div className="w-3 h-3 bg-red-500 rounded-full" />
-                <div className="w-3 h-3 bg-yellow-500 rounded-full" />
-                <div className="w-3 h-3 bg-green-500 rounded-full" />
+          {/* Top bar */}
+          <div className="flex items-center justify-between px-5 sm:px-6 py-3 border-b border-blue-500/20 bg-gray-800/40">
+            <div className="flex items-center gap-3">
+              <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/90" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/90" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/90" />
               </div>
-              <span className="text-gray-300 font-mono text-sm">~/shashank-portfolio</span>
+              <span className="font-mono text-xs sm:text-sm text-gray-300">~/shashank-portfolio</span>
             </div>
-            <div className="text-cyan-400 font-mono text-sm">
+            <div className="font-mono text-xs sm:text-sm text-blue-400">
               <motion.span
                 animate={{ opacity: [1, 0.5, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: "linear" }}
               >
-                LOADING...
+                LOADING
               </motion.span>
             </div>
           </div>
 
-          {/* Main content */}
-          <div className="px-6 sm:px-10 py-8 sm:py-12">
-            {/* ASCII Art Logo */}
-            <motion.div
-              className="text-center font-mono text-cyan-400 text-xs sm:text-sm mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: easeOut }}
-            >
-              <div className="whitespace-pre-line">
-{`  _____ _   _          _____ _   _          _   _ _  __
- / ____| | | |   /\\   / ____| | | |   /\\   | \\ | | |/ /
-| (___ | |_| |  /  \\ | (___ | |_| |  /  \\  |  \\| | ' / 
- \\___ \\|  _  | / /\\ \\ \\___ \\|  _  | / /\\ \\ | . \` |  <  
- ____) | | | |/ ____ \\____) | | | |/ ____ \\| |\\  | . \\ 
-|_____/|_| |_/_/    \\_\\_____/|_| |_/_/    \\_\\_| \\_|_|\\_\\`}
-              </div>
-            </motion.div>
-
-            {/* Developer title with glitch effect */}
+          {/* Content */}
+          <div className="px-5 sm:px-8 py-8 sm:py-10">
+            {/* Title with gradient motion */}
             <motion.h1
-              className="text-center text-2xl sm:text-4xl md:text-5xl font-bold mb-8 relative"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-center text-2xl sm:text-4xl md:text-5xl font-extrabold mb-6 relative"
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4, ease: easeOut }}
+              transition={{ duration: 0.45, ease: easeOut }}
             >
               <motion.span
-                className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 bg-clip-text text-transparent"
                 animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                 style={{ backgroundSize: "200% 100%" }}
               >
-                FULL STACK DEVELOPER
-              </motion.span>
-
-              {/* Glitch effect overlay */}
-              <motion.span
-                className="absolute inset-0 text-red-500 mix-blend-multiply opacity-0"
-                animate={{ opacity: [0, 0.7, 0], x: [-2, 2, -1, 1, 0] }}
-                transition={{
-                  duration: 0.1,
-                  repeat: Infinity,
-                  repeatDelay: 3,
-                  times: [0, 0.1, 0.2, 0.3, 1],
-                  ease: easeOut,
-                }}
-                aria-hidden="true"
-              >
-                FULL STACK DEVELOPER
+                Initializing Your Session
               </motion.span>
             </motion.h1>
 
-            {/* Large progress display */}
-            <motion.div
-              className="text-center mb-8"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.6, ease: easeOut }}
-            >
+            {/* Progress stack: ring + bar */}
+            <div className="flex flex-col items-center gap-8 mb-6">
+              {/* Ring */}
               <motion.div
-                className="text-8xl sm:text-9xl font-mono font-black mb-4"
-                animate={{
-                  textShadow: [
-                    "0 0 20px rgba(6,182,212,0.5)",
-                    "0 0 40px rgba(6,182,212,0.8)",
-                    "0 0 20px rgba(6,182,212,0.5)",
-                  ],
-                }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                className="relative"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.1, ease: easeOut }}
               >
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  {progress}
-                </span>
-                <span className="text-cyan-400">%</span>
-              </motion.div>
-            </motion.div>
-
-            {/* Advanced progress bar */}
-            <motion.div
-              className="mb-8 space-y-3"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8, ease: easeOut }}
-            >
-              <div className="flex justify-between text-sm font-mono text-gray-400">
-                <span>Loading Progress</span>
-                <span>{progress}/100</span>
-              </div>
-
-              <div className="relative h-4 bg-gray-800 rounded-full border border-gray-700 overflow-hidden">
-                {/* Background glow */}
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/20 to-blue-900/20" />
-
-                {/* Progress fill */}
-                <motion.div
-                  className="h-full rounded-full relative overflow-hidden"
-                  initial={{ width: "0%" }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.3, ease: easeOut }}
-                  style={{
-                    background: "linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6)",
-                    boxShadow: "0 0 20px rgba(6,182,212,0.6)",
-                  }}
-                >
-                  {/* Animated shimmer effect */}
-                  <motion.div
-                    className="absolute inset-0"
-                    animate={{ x: ["-100%", "200%"] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                    style={{
-                      background:
-                        "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
-                      width: "50%",
-                    }}
+                <svg width="140" height="140" viewBox="0 0 120 120">
+                  <defs>
+                    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#60A5FA" />
+                      <stop offset="50%" stopColor="#8B5CF6" />
+                      <stop offset="100%" stopColor="#22D3EE" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="60" cy="60" r="52" stroke="rgba(59,130,246,0.2)" strokeWidth="10" fill="none" />
+                  <motion.circle
+                    cx="60"
+                    cy="60"
+                    r="52"
+                    stroke="url(#ring)"
+                    strokeWidth="10"
+                    strokeLinecap="round"
+                    fill="none"
+                    strokeDasharray={Math.PI * 2 * 52}
+                    strokeDashoffset={Math.PI * 2 * 52 * (1 - progress / 100)}
+                    animate={{ strokeDashoffset: Math.PI * 2 * 52 * (1 - progress / 100) }}
+                    transition={{ duration: 0.3, ease: easeOut }}
+                    style={{ filter: "drop-shadow(0 0 10px rgba(59,130,246,0.6))" }}
                   />
-                </motion.div>
-
-                {/* Progress indicator dots */}
-                <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2">
-                  {Array.from({ length: 10 }).map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="w-1 h-1 rounded-full bg-cyan-300/50"
-                      animate={{
-                        scale: progress > i * 10 ? [1, 1.5, 1] : 1,
-                        opacity: progress > i * 10 ? 1 : 0.3,
-                      }}
-                      transition={{ duration: 0.3, delay: i * 0.05, ease: easeOut }}
-                    />
-                  ))}
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="font-mono text-3xl sm:text-4xl font-black">
+                    <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                      {progress}
+                    </span>
+                    <span className="text-blue-400">%</span>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
 
-            {/* Status message with typewriter cursor */}
-            <motion.div
-              className="text-center mb-6"
-              key={messageIndex}
-              initial={{ opacity: 0, y: 10 }}
+              {/* Bar */}
+              <motion.div
+                className="w-full max-w-[520px]"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.15, ease: easeOut }}
+              >
+                <div className="flex justify-between text-[12px] sm:text-sm font-mono text-gray-400 mb-2">
+                  <span>Progress</span>
+                  <span>{progress}/100</span>
+                </div>
+                <div className="relative h-3.5 rounded-full bg-gray-800 border border-gray-700 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-indigo-900/20" />
+                  <motion.div
+                    className="h-full rounded-full relative overflow-hidden"
+                    initial={{ width: "0%" }}
+                    animate={{ width: `${progress}%` }}
+                    transition={{ duration: 0.3, ease: easeOut }}
+                    style={{
+                      background: "linear-gradient(90deg, #22d3ee, #3b82f6, #8b5cf6)",
+                      boxShadow: "0 0 18px rgba(59,130,246,0.6)",
+                    }}
+                  >
+                    <motion.div
+                      className="absolute inset-0"
+                      animate={{ x: ["-60%", "140%"] }}
+                      transition={{ duration: 1.8, repeat: Infinity, ease: "linear" }}
+                      style={{
+                        background:
+                          "linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent)",
+                        width: "45%",
+                      }}
+                    />
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Status message */}
+            <motion.p
+              key={msgIdx}
+              className="text-center text-sm sm:text-base font-mono text-gray-300 mb-8"
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: easeOut }}
+              transition={{ duration: 0.35, ease: easeOut }}
             >
-              <p className="text-lg font-mono text-gray-300">
-                <span className="text-cyan-400">$</span> {messages[messageIndex]}
-                <motion.span
-                  className="inline-block ml-2 w-3 h-6 bg-cyan-400"
-                  animate={{ opacity: [0, 1, 0] }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                />
-              </p>
-            </motion.div>
+              <span className="text-blue-400">$</span> {messages[msgIdx]}
+              <motion.span
+                className="inline-block ml-2 w-2.5 h-5 bg-blue-400 align-[-2px]"
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              />
+            </motion.p>
 
-            {/* Loading dots */}
-            <motion.div
-              className="flex justify-center space-x-2 mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1, ease: easeOut }}
-            >
-              {[0, 1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  className="w-3 h-3 bg-cyan-400 rounded-full"
-                  animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2, ease: "linear" }}
-                />
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Tech stack ticker - enhanced */}
-          <div className="border-t border-cyan-400/20 bg-gray-900/50 overflow-hidden">
-            <motion.div
-              className="flex whitespace-nowrap py-3"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              {[
-                "React",
-                "TypeScript",
-                "Node.js",
-                "Python",
-                "PostgreSQL",
-                "MongoDB",
-                "Docker",
-                "AWS",
-                "Kubernetes",
-                "GraphQL",
-                "Next.js",
-                "Express",
-                "Redis",
-                "Elasticsearch",
-                "Microservices",
-              ]
-                .concat([
+            {/* Tech ticker */}
+            <div className="border-t border-blue-500/20 bg-gray-900/40 overflow-hidden">
+              <motion.div
+                className="flex whitespace-nowrap py-3"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+              >
+                {[
                   "React",
                   "TypeScript",
                   "Node.js",
-                  "Python",
                   "PostgreSQL",
                   "MongoDB",
                   "Docker",
@@ -401,24 +289,41 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
                   "Redis",
                   "Elasticsearch",
                   "Microservices",
-                ])
-                .map((tech, i) => (
-                  <span key={i} className="mx-8 text-sm font-mono font-semibold">
-                    <span className="text-cyan-400">[</span>
-                    <span className="text-gray-300">{tech}</span>
-                    <span className="text-cyan-400">]</span>
-                  </span>
-                ))}
-            </motion.div>
-          </div>
+                ]
+                  .concat([
+                    "React",
+                    "TypeScript",
+                    "Node.js",
+                    "PostgreSQL",
+                    "MongoDB",
+                    "Docker",
+                    "AWS",
+                    "Kubernetes",
+                    "GraphQL",
+                    "Next.js",
+                    "Express",
+                    "Redis",
+                    "Elasticsearch",
+                    "Microservices",
+                  ])
+                  .map((tech, i) => (
+                    <span key={i} className="mx-8 text-[13px] sm:text-sm font-mono font-semibold">
+                      <span className="text-blue-400">[</span>
+                      <span className="text-gray-300">{tech}</span>
+                      <span className="text-blue-400">]</span>
+                    </span>
+                  ))}
+              </motion.div>
+            </div>
 
-          {/* Corner accent lights */}
-          <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-cyan-400/20 to-transparent rounded-full blur-xl" />
-          <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-blue-400/20 to-transparent rounded-full blur-xl" />
+            {/* Corner accents */}
+            <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-xl" />
+            <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-indigo-400/20 to-transparent rounded-full blur-xl" />
+          </div>
         </motion.div>
       </div>
 
-      {/* Accessibility and reduced motion */}
+      {/* Reduced motion accessibility */}
       <style jsx global>{`
         @media (prefers-reduced-motion: reduce) {
           * {

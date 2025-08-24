@@ -40,7 +40,8 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-16 bg-background border-t border-border overflow-hidden">
+    
+    <footer id="site-footer" className="relative mt-16 bg-background border-t border-border overflow-hidden">
       {/* Ambient gradient glows */}
       <motion.div
         className="pointer-events-none absolute inset-0 opacity-20"
@@ -67,8 +68,8 @@ export default function Footer() {
               }}
             >
               <span className="text-foreground">Shashank </span>
-              <span className="text-blue-600 dark:text-blue-500">Mishra</span>
-              <span className="text-blue-600 dark:text-blue-500">·</span>
+              <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">Mishra·</span>
+              {/* <span className="text-blue-600 dark:text-blue-500">·</span> */}
             </span>
           </Link>
 
