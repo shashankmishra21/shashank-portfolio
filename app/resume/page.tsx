@@ -112,7 +112,7 @@ export default function Resume() {
                     Shashank Mishra · Full Stack Web Developer
                   </h2>
                   <p className="text-sm md:text-base text-muted-foreground">
-                    I specialize in React, Next.js, Node.js, Python, Django, and cloud technologies, and I'm ready to deliver clean code, scalable solutions, and measurable impact for your team's success.
+                    I specialize in React, Next.js, Node.js, Python, Django, and cloud technologies, and I&apos;m ready to deliver clean code, scalable solutions, and measurable impact for your team's success.
                   </p>
                 </div>
 

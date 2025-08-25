@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Mail, Github, Linkedin, Heart, Code2 } from "lucide-react";
+import { Mail, Github, Linkedin } from "lucide-react";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
 
