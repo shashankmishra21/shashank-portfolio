@@ -6,7 +6,7 @@ import { useCallback } from "react";
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-export default function Resume() {
+export default function esume() {
   const handleDownload = useCallback(() => {
     const link = document.createElement("a");
     link.href = "/Resume-Shashank_Mishra.pdf";
@@ -63,10 +63,6 @@ export default function Resume() {
                 My Resume
               </span>
             </h1>
-
-            <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
-              Full-stack web developer with proven impact in scalable systems, modern tech stacks, and user-centered solutions. Download and connect on LinkedIn.
-            </p>
           </motion.div>
 
           {/* Quick highlights */}
@@ -179,7 +175,7 @@ export default function Resume() {
             transition={{ duration: 0.4, delay: 0.4, ease: easeOut }}
           >
             <p className="text-xs md:text-sm text-muted-foreground">
-              💼 Open to full-time opportunities · 🤝 Available for consulting · 📍 Remote-friendly
+              💼 Open to internships or full-time opportunities
             </p>
           </motion.div>
         </div>
