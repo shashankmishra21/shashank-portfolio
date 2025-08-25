@@ -91,17 +91,17 @@ export default function Contact() {
           transition={{ duration: 0.5, ease: easeOut }}
         >
           <div className="inline-flex items-center gap-3 mb-3">
-            <Sparkles className="w-5 h-5 text-blue-500" />
-            <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-blue-500/80">
+           
+            <span className="text-xs md:text-sm font-semibold uppercase tracking-widest">
               Contact
             </span>
-            <Sparkles className="w-5 h-5 text-blue-500" />
+            
           </div>
 
           {/* HEADLINE OPTIONS — pick one and keep it */}
           {/* Option A (default): */}
           <h2 className="text-3xl md:text-5xl font-display font-extrabold tracking-tight">
-            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-blue-500">
               Build Something Exceptional Together
             </span>
           </h2>

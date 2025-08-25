@@ -57,11 +57,14 @@ export default function Resume() {
               Ready to hire
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-display font-extrabold tracking-tight">
-              <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
-                My Resume
-              </span>
-            </h1>
+            <p className="text-xs md:text-sm tracking-widest font-semibold uppercase">
+            Resume
+          </p>
+          <h2 className="mt-2 text-3xl md:text-5xl font-display font-extrabold tracking-tight">
+            <span className="text-blue-500">
+              Engineer of Reliable, Efficient Applications
+            </span>
+          </h2>
           </motion.div>
 
           {/* Quick highlights */}
@@ -109,7 +112,7 @@ export default function Resume() {
               <div className="w-full">
                 <div className="mb-6">
                   <h2 className="text-xl md:text-2xl font-display font-bold text-foreground mb-2">
-                    Shashank Mishra · Full Stack Web Developer
+                    Shashank Mishra
                   </h2>
                   <p className="text-sm md:text-base text-muted-foreground">
                     I specialize in React, Next.js, Node.js, Python, Django, and cloud technologies, and I&apos;m ready to deliver clean code, scalable solutions, and measurable impact for your team&apos;s success.
@@ -117,48 +120,51 @@ export default function Resume() {
                 </div>
 
                 {/* Call-to-action buttons */}
-                <div className="flex flex-col sm:flex-row items-center gap-4">
-                  <button
-                    onClick={handleDownload}
-                    className="
-                      group relative inline-flex items-center justify-center gap-2
-                      px-6 py-3 rounded-full
-                      bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600
-                      text-white font-bold text-sm md:text-base
-                      shadow-[0_12px_28px_-12px_rgba(59,130,246,0.6)]
-                      hover:shadow-[0_16px_34px_-14px_rgba(59,130,246,0.7)]
-                      hover:brightness-[1.05] active:brightness-[0.95]
-                      transition-all duration-200
-                      w-full sm:w-auto
-                      focus:outline-none focus:ring-2 focus:ring-blue-500/50
-                    "
-                    aria-label="Download Shashank's Resume"
-                  >
-                    <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                    Download Resume
-                    <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </button>
+<div className="flex flex-col sm:flex-row items-center gap-4">
+  {/* Download Resume Button */}
+  <button
+    onClick={handleDownload}
+    className="
+      group relative inline-flex items-center justify-center gap-2
+      px-6 py-3 rounded-full
+      bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700
+      text-white font-bold text-sm md:text-base
+      shadow-[0_12px_28px_-12px_rgba(59,130,246,0.6)]
+      hover:shadow-[0_16px_34px_-14px_rgba(59,130,246,0.7)]
+      hover:brightness-[1.05] active:brightness-[0.95]
+      transition-all duration-200
+      w-full sm:w-auto
+      focus:outline-none focus:ring-2 focus:ring-blue-500/50
+    "
+    aria-label="Download Shashank's Resume"
+  >
+    <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
+    Download Resume
+    <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+  </button>
 
-                  <button
-                    onClick={handleExternal}
-                    className="
-                      group inline-flex items-center justify-center gap-2
-                      px-6 py-3 rounded-full
-                      bg-background/90 backdrop-blur
-                      border border-border/80
-                      text-foreground font-semibold text-sm md:text-base
-                      hover:bg-background hover:border-blue-500/30
-                      hover:shadow-[0_8px_20px_-8px_rgba(59,130,246,0.3)]
-                      transition-all duration-200
-                      w-full sm:w-auto
-                      focus:outline-none focus:ring-2 focus:ring-blue-500/50
-                    "
-                    aria-label="Connect with Shashank on LinkedIn"
-                  >
-                    <ExternalLink className="w-5 h-5 text-indigo-500 group-hover:scale-110 transition-transform" />
-                    Connect on LinkedIn
-                  </button>
-                </div>
+  {/* LinkedIn Button */}
+  <button
+    onClick={handleExternal}
+    className="
+      group inline-flex items-center justify-center gap-2
+      px-6 py-3 rounded-full
+      bg-background/90 backdrop-blur
+      border border-blue-300/60
+      text-blue-700 font-semibold text-sm md:text-base
+      hover:bg-blue-50 hover:border-blue-500/50
+      hover:shadow-[0_8px_20px_-8px_rgba(59,130,246,0.3)]
+      transition-all duration-200
+      w-full sm:w-auto
+      focus:outline-none focus:ring-2 focus:ring-blue-500/50
+    "
+    aria-label="Connect with Shashank on LinkedIn"
+  >
+    <ExternalLink className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform" />
+    Connect on LinkedIn
+  </button>
+</div>
+
               </div>
             </div>
           </motion.div>

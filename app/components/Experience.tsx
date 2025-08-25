@@ -118,11 +118,11 @@ export default function Experience() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: easeOut }}
         >
-          <p className="text-[11px] md:text-xs tracking-widest text-blue-500/80 font-semibold uppercase">
+          <p className="text-[11px] md:text-xs tracking-widest font-semibold uppercase">
             Experience
           </p>
           <h2 className="mt-1 text-2xl md:text-4xl font-display font-extrabold tracking-tight">
-            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-blue-500">
               Impact & Outcomes
             </span>
           </h2>

@@ -119,7 +119,7 @@ export default function Header() {
                     }}
                   >
                     <span className="text-foreground">Shashank </span>
-                    <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">Mishra·</span>
+                    <span className="text-blue-500">Mishra·</span>
                   </span>
                 </Link>
               </motion.div>

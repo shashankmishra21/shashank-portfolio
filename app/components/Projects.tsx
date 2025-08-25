@@ -112,7 +112,7 @@ export default function Projects() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-display font-extrabold tracking-tight">
-              <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-blue-500">
                 Featured Projects
               </span>
             </h2>
