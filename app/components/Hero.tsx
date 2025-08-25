@@ -39,7 +39,7 @@ export default function Hero() {
       className="
         relative overflow-hidden
         min-h-svh flex items-center justify-center
-        px-4 sm:px-6 lg:px-8
+        px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20
         py-8 sm:py-12 md:py-0
         max-[768px]:pb-[calc(100px+env(safe-area-inset-bottom))]
       "
@@ -61,11 +61,11 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {/* Centered container with reduced max-width to bring content closer */}
+      {/* Balanced container */}
       <div className="max-w-6xl mx-auto relative z-10 w-full">
         {/* Mobile and small tablet layout (stacked, centered) */}
         <div className="block lg:hidden">
-          <div className="flex flex-col items-center text-center space-y-8 max-w-2xl mx-auto">
+          <div className="flex flex-col items-center text-center space-y-8">
             
             {/* Profile image first on mobile */}
             <motion.div
@@ -348,277 +348,275 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Large screen layout - CENTER FOCUSED with reduced gap */}
-        <div className="hidden lg:flex lg:items-center lg:justify-center lg:min-h-[70vh] xl:min-h-[60vh]">
-          <div className="flex items-center justify-center gap-8 xl:gap-10 2xl:gap-12 max-w-5xl mx-auto">
-            
-            {/* Text content - Reduced width for center focus */}
+        {/* Large screen layout - BALANCED GRID */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-12 xl:gap-16 items-center min-h-[70vh] xl:min-h-[60vh]">
+          
+          {/* Text content - Properly sized */}
+          <motion.div
+            className="flex flex-col items-start text-left justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: easeOut }}
+          >
+            {/* Status badge */}
             <motion.div
-              className="flex flex-col items-start text-left flex-shrink-0"
-              initial={{ opacity: 0, y: 20 }}
+              className="mb-6"
+              initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: easeOut }}
+              transition={{ duration: 0.5, ease: easeOut }}
             >
-              {/* Status badge */}
-              <motion.div
-                className="mb-6"
-                initial={{ opacity: 0, y: -15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: easeOut }}
+              <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-600 dark:text-emerald-400 text-sm font-semibold backdrop-blur-sm">
+                <span className="inline-block w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                Available for hire
+              </span>
+            </motion.div>
+
+            {/* Greeting */}
+            <motion.p
+              className="text-muted-foreground mb-4 text-lg font-medium tracking-wide"
+              initial={{ opacity: 0, x: -25 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.15, duration: 0.5, ease: easeOut }}
+            >
+              <span className="mr-3 text-blue-500 font-mono">{">"}</span>
+              <span className="uppercase tracking-wider">Hi, I am</span>
+            </motion.p>
+
+            {/* Name - Maintained original size */}
+            <h1 className="text-6xl xl:text-7xl 2xl:text-8xl font-display font-black mb-6 tracking-tight leading-[0.85]">
+              <motion.div 
+                animate={{ 
+                  y: [-3, 3, -3], 
+                  rotate: [-0.5, 0.5, -0.5] 
+                }} 
+                transition={{ 
+                  duration: 8, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
               >
-                <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-600 dark:text-emerald-400 text-sm font-semibold backdrop-blur-sm">
-                  <span className="inline-block w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                  Available for hire
+                <span className="text-blue-600 dark:text-blue-500 transition-colors duration-300">
+                  {"Shashank".split("").map((letter, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0, y: 40, rotateX: -90 }}
+                      animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                      transition={{ 
+                        delay: i * 0.08, 
+                        duration: 0.6, 
+                        ease: easeOut 
+                      }}
+                      whileHover={{
+                        scale: 1.1,
+                        textShadow: "0 0 20px rgba(59,130,246,0.6)",
+                        filter: "drop-shadow(0 0 10px rgba(59,130,246,0.4))",
+                        transition: { duration: 0.2 }
+                      }}
+                      className="inline-block cursor-pointer transition-all duration-300"
+                    >
+                      {letter}
+                    </motion.span>
+                  ))}
                 </span>
               </motion.div>
+            </h1>
 
-              {/* Greeting */}
-              <motion.p
-                className="text-muted-foreground mb-4 text-lg font-medium tracking-wide"
-                initial={{ opacity: 0, x: -25 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.15, duration: 0.5, ease: easeOut }}
-              >
-                <span className="mr-3 text-blue-500 font-mono">{">"}</span>
-                <span className="uppercase tracking-wider">Hi, I am</span>
-              </motion.p>
-
-              {/* Name - Optimized size for center layout */}
-              <h1 className="text-5xl xl:text-6xl 2xl:text-7xl font-display font-black mb-6 tracking-tight leading-[0.85]">
-                <motion.div 
-                  animate={{ 
-                    y: [-3, 3, -3], 
-                    rotate: [-0.5, 0.5, -0.5] 
-                  }} 
-                  transition={{ 
-                    duration: 8, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
-                  }}
-                >
-                  <span className="text-blue-600 dark:text-blue-500 transition-colors duration-300">
-                    {"Shashank".split("").map((letter, i) => (
-                      <motion.span
-                        key={i}
-                        initial={{ opacity: 0, y: 40, rotateX: -90 }}
-                        animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                        transition={{ 
-                          delay: i * 0.08, 
-                          duration: 0.6, 
-                          ease: easeOut 
-                        }}
-                        whileHover={{
-                          scale: 1.1,
-                          textShadow: "0 0 20px rgba(59,130,246,0.6)",
-                          filter: "drop-shadow(0 0 10px rgba(59,130,246,0.4))",
-                          transition: { duration: 0.2 }
-                        }}
-                        className="inline-block cursor-pointer transition-all duration-300"
-                      >
-                        {letter}
-                      </motion.span>
-                    ))}
-                  </span>
-                </motion.div>
-              </h1>
-
-              {/* Dynamic roles */}
-              <motion.div
-                className="mb-8 min-h-[3rem] xl:min-h-[3.5rem] flex items-center"
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.2, ease: easeOut }}
-              >
-                <h2 className="text-xl xl:text-2xl 2xl:text-3xl font-display font-extrabold tracking-tight text-foreground">
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={currentRoleIndex}
-                      initial={{ 
-                        opacity: 0, 
-                        y: 25, 
-                        scale: 0.95, 
-                        rotateX: -90, 
-                        filter: "blur(2px)" 
-                      }}
-                      animate={{ 
-                        opacity: 1, 
-                        y: 0, 
-                        scale: 1, 
-                        rotateX: 0, 
-                        filter: "blur(0px)" 
-                      }}
-                      exit={{ 
-                        opacity: 0, 
-                        y: -20, 
-                        scale: 0.98, 
-                        rotateX: 90, 
-                        filter: "blur(2px)" 
-                      }}
-                      transition={{ duration: 0.4, ease: easeOut }}
-                      className="inline-block bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent"
-                    >
-                      {roles[currentRoleIndex]}
-                    </motion.span>
-                  </AnimatePresence>
-                </h2>
-              </motion.div>
-
-              {/* CTA buttons */}
-              <motion.div
-                className="flex flex-row items-center gap-6"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3, ease: easeOut }}
-              >
-                {/* Resume button */}
-                <motion.div 
-                  whileHover={{ scale: 1.05 }} 
-                  whileTap={{ scale: 0.98 }} 
-                  transition={{ duration: 0.2, ease: easeOut }}
-                >
-                  <Link
-                    href="/resume"
-                    className="
-                      inline-flex items-center justify-center
-                      bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800
-                      text-white font-semibold
-                      px-8 py-4
-                      rounded-full text-base
-                      shadow-lg hover:shadow-xl hover:shadow-blue-500/25
-                      transition-all duration-300
-                      border border-blue-500/50
-                      backdrop-blur-sm
-                    "
+            {/* Dynamic roles - Maintained size */}
+            <motion.div
+              className="mb-8 min-h-[3.5rem] xl:min-h-[4rem] flex items-center w-full"
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2, ease: easeOut }}
+            >
+              <h2 className="text-2xl xl:text-3xl 2xl:text-4xl font-display font-extrabold tracking-tight text-foreground">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentRoleIndex}
+                    initial={{ 
+                      opacity: 0, 
+                      y: 25, 
+                      scale: 0.95, 
+                      rotateX: -90, 
+                      filter: "blur(2px)" 
+                    }}
+                    animate={{ 
+                      opacity: 1, 
+                      y: 0, 
+                      scale: 1, 
+                      rotateX: 0, 
+                      filter: "blur(0px)" 
+                    }}
+                    exit={{ 
+                      opacity: 0, 
+                      y: -20, 
+                      scale: 0.98, 
+                      rotateX: 90, 
+                      filter: "blur(2px)" 
+                    }}
+                    transition={{ duration: 0.4, ease: easeOut }}
+                    className="inline-block bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent"
                   >
-                    View Resume
-                  </Link>
-                </motion.div>
-
-                {/* Social icons */}
-                <div className="flex items-center gap-4">
-                  {[
-                    { 
-                      href: "mailto:mishrashashank2106@gmail.com", 
-                      icon: Mail, 
-                      color: "bg-red-500 hover:bg-red-600", 
-                      label: "Email" 
-                    },
-                    { 
-                      href: "https://github.com/shashankmishra21", 
-                      icon: Github, 
-                      color: "bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-800", 
-                      label: "GitHub" 
-                    },
-                    { 
-                      href: "https://linkedin.com/in/mishrashashank2106", 
-                      icon: Linkedin, 
-                      color: "bg-blue-600 hover:bg-blue-700", 
-                      label: "LinkedIn" 
-                    },
-                    { 
-                      href: "https://x.com/mishrashashank_", 
-                      icon: XLogo, 
-                      color: "bg-gray-900 hover:bg-black dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900", 
-                      label: "X" 
-                    },
-                  ].map((social, index) => (
-                    <motion.a
-                      key={social.label}
-                      href={social.href}
-                      target={social.href.startsWith("mailto:") ? undefined : "_blank"}
-                      rel={social.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                      className={`
-                        ${social.color} 
-                        inline-flex items-center justify-center 
-                        w-14 h-14
-                        rounded-full text-white 
-                        transition-all duration-300 
-                        shadow-lg hover:shadow-xl
-                        border border-white/10
-                        backdrop-blur-sm
-                      `}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ 
-                        delay: 0.4 + index * 0.1, 
-                        duration: 0.4, 
-                        ease: easeOut,
-                        type: "spring",
-                        stiffness: 200
-                      }}
-                      whileHover={{ 
-                        scale: 1.1, 
-                        rotate: 5, 
-                        y: -2,
-                        transition: { duration: 0.2, ease: easeOut } 
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                      aria-label={social.label}
-                      title={social.label}
-                    >
-                      <social.icon className="w-6 h-6" />
-                    </motion.a>
-                  ))}
-                </div>
-              </motion.div>
+                    {roles[currentRoleIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </h2>
             </motion.div>
 
-            {/* Profile image - Positioned closer to text */}
+            {/* CTA buttons */}
             <motion.div
-              className="flex justify-center items-center flex-shrink-0"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: easeOut }}
+              className="flex flex-row items-center gap-6"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: easeOut }}
             >
-              <div className="relative">
-                {/* Animated background glow */}
-                <motion.div
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-blue-500 opacity-25 blur-2xl"
-                  animate={{ 
-                    scale: [1, 1.15, 1], 
-                    rotate: [0, 180, 360] 
-                  }}
-                  transition={{ 
-                    duration: 12, 
-                    repeat: Infinity, 
-                    ease: "linear" 
-                  }}
-                />
-                
-                {/* Profile image - Same size, better positioned */}
-                <motion.img
-                  src="/profile-image.png"
-                  alt="Shashank Mishra - Full Stack Developer"
+              {/* Resume button */}
+              <motion.div 
+                whileHover={{ scale: 1.05 }} 
+                whileTap={{ scale: 0.98 }} 
+                transition={{ duration: 0.2, ease: easeOut }}
+              >
+                <Link
+                  href="/resume"
                   className="
-                    w-64 h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80
-                    object-cover rounded-full shadow-2xl relative z-10 
-                    border-4 border-white/20 dark:border-white/10
-                    ring-2 ring-blue-500/20
+                    inline-flex items-center justify-center
+                    bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800
+                    text-white font-semibold
+                    px-8 py-4
+                    rounded-full text-base
+                    shadow-lg hover:shadow-xl hover:shadow-blue-500/25
+                    transition-all duration-300
+                    border border-blue-500/50
+                    backdrop-blur-sm
                   "
-                  whileHover={{ 
-                    scale: 1.05, 
-                    rotate: 3, 
-                    boxShadow: '0 25px 50px -12px rgba(59,130,246,0.4)' 
-                  }}
-                  transition={{ duration: 0.3, ease: easeOut }}
-                />
-                
-                {/* Animated border ring */}
-                <motion.div
-                  className="absolute -inset-4 rounded-full border-2 border-blue-500/30"
-                  animate={{ 
-                    rotate: [0, 360], 
-                    scale: [1, 1.05, 1] 
-                  }}
-                  transition={{ 
-                    duration: 20, 
-                    repeat: Infinity, 
-                    ease: "linear" 
-                  }}
-                />
+                >
+                  View Resume
+                </Link>
+              </motion.div>
+
+              {/* Social icons */}
+              <div className="flex items-center gap-4">
+                {[
+                  { 
+                    href: "mailto:mishrashashank2106@gmail.com", 
+                    icon: Mail, 
+                    color: "bg-red-500 hover:bg-red-600", 
+                    label: "Email" 
+                  },
+                  { 
+                    href: "https://github.com/shashankmishra21", 
+                    icon: Github, 
+                    color: "bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-800", 
+                    label: "GitHub" 
+                  },
+                  { 
+                    href: "https://linkedin.com/in/mishrashashank2106", 
+                    icon: Linkedin, 
+                    color: "bg-blue-600 hover:bg-blue-700", 
+                    label: "LinkedIn" 
+                  },
+                  { 
+                    href: "https://x.com/mishrashashank_", 
+                    icon: XLogo, 
+                    color: "bg-gray-900 hover:bg-black dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900", 
+                    label: "X" 
+                  },
+                ].map((social, index) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+                    rel={social.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                    className={`
+                      ${social.color} 
+                      inline-flex items-center justify-center 
+                      w-14 h-14
+                      rounded-full text-white 
+                      transition-all duration-300 
+                      shadow-lg hover:shadow-xl
+                      border border-white/10
+                      backdrop-blur-sm
+                    `}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ 
+                      delay: 0.4 + index * 0.1, 
+                      duration: 0.4, 
+                      ease: easeOut,
+                      type: "spring",
+                      stiffness: 200
+                    }}
+                    whileHover={{ 
+                      scale: 1.1, 
+                      rotate: 5, 
+                      y: -2,
+                      transition: { duration: 0.2, ease: easeOut } 
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    aria-label={social.label}
+                    title={social.label}
+                  >
+                    <social.icon className="w-6 h-6" />
+                  </motion.a>
+                ))}
               </div>
             </motion.div>
-          </div>
+          </motion.div>
+
+          {/* Profile image - Same size, better positioning */}
+          <motion.div
+            className="flex justify-center items-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: easeOut }}
+          >
+            <div className="relative">
+              {/* Animated background glow */}
+              <motion.div
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-blue-500 opacity-25 blur-2xl"
+                animate={{ 
+                  scale: [1, 1.15, 1], 
+                  rotate: [0, 180, 360] 
+                }}
+                transition={{ 
+                  duration: 12, 
+                  repeat: Infinity, 
+                  ease: "linear" 
+                }}
+              />
+              
+              {/* Profile image - Maintained original size */}
+              <motion.img
+                src="/profile-image.png"
+                alt="Shashank Mishra - Full Stack Developer"
+                className="
+                  w-64 h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80
+                  object-cover rounded-full shadow-2xl relative z-10 
+                  border-4 border-white/20 dark:border-white/10
+                  ring-2 ring-blue-500/20
+                "
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotate: 3, 
+                  boxShadow: '0 25px 50px -12px rgba(59,130,246,0.4)' 
+                }}
+                transition={{ duration: 0.3, ease: easeOut }}
+              />
+              
+              {/* Animated border ring */}
+              <motion.div
+                className="absolute -inset-4 rounded-full border-2 border-blue-500/30"
+                animate={{ 
+                  rotate: [0, 360], 
+                  scale: [1, 1.05, 1] 
+                }}
+                transition={{ 
+                  duration: 20, 
+                  repeat: Infinity, 
+                  ease: "linear" 
+                }}
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
     </motion.section>
