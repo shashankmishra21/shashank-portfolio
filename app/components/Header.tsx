@@ -259,7 +259,7 @@ export default function Header() {
               { href: "/", icon: Home, label: "Home" },
               { href: "/projects", icon: Code, label: "Projects" },
               { href: "/skills", icon: User, label: "Skills" },
-              { href: "/resume", icon: FileText, label: "Resume" },
+              { href: "/Resume", icon: FileText, label: "Resume" },
             ].map((item) => {
               const active = pathname === item.href;
               const Icon = item.icon;
