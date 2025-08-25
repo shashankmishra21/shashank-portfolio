@@ -39,11 +39,14 @@ export default function ProjectsPage() {
     <section className="bg-background">
       <div className="max-w-6xl mx-auto px-5 md:px-6 py-16 md:py-20">
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-5xl font-display font-extrabold tracking-tight">
-            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
-              Selected Projects
+          <p className="text-xs md:text-sm tracking-widest font-semibold uppercase mt-5">
+            Projects
+          </p>
+          <h2 className="mt-2 text-3xl md:text-5xl font-display font-extrabold tracking-tight">
+            <span className="text-blue-500">
+              Crafted with Purpose, Built for Users
             </span>
-          </h1>
+          </h2>
           <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
             Outcome-driven work across SaaS and learning platforms, built with performance in mind.
           </p>

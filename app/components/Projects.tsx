@@ -117,7 +117,7 @@ export default function Projects() {
               </span>
             </h2>
             <p className="mt-2 text-xs md:text-sm text-muted-foreground">
-              Selected work with an emphasis on outcomes and polish.
+              Solutions that matter, built with purpose and polish.
             </p>
           </div>
           <Link

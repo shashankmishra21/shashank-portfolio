@@ -54,18 +54,21 @@ export default function Resume() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 text-emerald-500 text-xs font-semibold mb-4">
               <CheckCircle className="w-4 h-4" />
-              Ready to hire
+              Open for full time / internships opportunities
             </div>
+            <div className="text-center mb-12">
+              <p className="text-xs md:text-sm tracking-widest font-semibold uppercase">
+                Resume
+              </p>
+              <h2 className="mt-2 text-3xl md:text-5xl font-display font-extrabold tracking-tight">
+                <span className="text-blue-500 whitespace-normal">
+                  Engineer of Reliable, Efficient Applications
+                </span>
 
-            <p className="text-xs md:text-sm tracking-widest font-semibold uppercase">
-            Resume
-          </p>
-          <h2 className="mt-2 text-3xl md:text-5xl font-display font-extrabold tracking-tight">
-            <span className="text-blue-500">
-              Engineer of Reliable, Efficient Applications
-            </span>
-          </h2>
+              </h2>
+            </div>
           </motion.div>
+
 
           {/* Quick highlights */}
           <motion.div
@@ -120,11 +123,11 @@ export default function Resume() {
                 </div>
 
                 {/* Call-to-action buttons */}
-<div className="flex flex-col sm:flex-row items-center gap-4">
-  {/* Download Resume Button */}
-  <button
-    onClick={handleDownload}
-    className="
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  {/* Download Resume Button */}
+                  <button
+                    onClick={handleDownload}
+                    className="
       group relative inline-flex items-center justify-center gap-2
       px-6 py-3 rounded-full
       bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700
@@ -136,17 +139,17 @@ export default function Resume() {
       w-full sm:w-auto
       focus:outline-none focus:ring-2 focus:ring-blue-500/50
     "
-    aria-label="Download Shashank's Resume"
-  >
-    <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
-    Download Resume
-    <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-  </button>
+                    aria-label="Download Shashank's Resume"
+                  >
+                    <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    Download Resume
+                    <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </button>
 
-  {/* LinkedIn Button */}
-  <button
-    onClick={handleExternal}
-    className="
+                  {/* LinkedIn Button */}
+                  <button
+                    onClick={handleExternal}
+                    className="
       group inline-flex items-center justify-center gap-2
       px-6 py-3 rounded-full
       bg-background/90 backdrop-blur
@@ -158,12 +161,12 @@ export default function Resume() {
       w-full sm:w-auto
       focus:outline-none focus:ring-2 focus:ring-blue-500/50
     "
-    aria-label="Connect with Shashank on LinkedIn"
-  >
-    <ExternalLink className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform" />
-    Connect on LinkedIn
-  </button>
-</div>
+                    aria-label="Connect with Shashank on LinkedIn"
+                  >
+                    <ExternalLink className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform" />
+                    Connect on LinkedIn
+                  </button>
+                </div>
 
               </div>
             </div>

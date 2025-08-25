@@ -10,7 +10,7 @@ const easeOut = [0.16, 1, 0.3, 1] as const;
 export default function Header() {
   const pathname = usePathname();
   const [showHeader, setShowHeader] = useState(true);
-  const [showBottomNav, setShowBottomNav] = useState(true); // New state for bottom nav
+  const [showBottomNav, setShowBottomNav] = useState(true);
   const lastScrollY = useRef(0);
 
   // Theme
@@ -30,14 +30,13 @@ export default function Header() {
     document.documentElement.classList.toggle("dark", next);
   };
 
-  // Combined scroll logic for desktop header and mobile bottom nav
+  // Scroll logic
   useEffect(() => {
     function handleScroll() {
       const currentScrollY = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
 
-      // Desktop header logic
       if (pathname === "/") {
         setShowHeader(true);
       } else {
@@ -48,9 +47,8 @@ export default function Header() {
         }
       }
 
-      // Mobile bottom nav logic - hide when near footer
       const distanceFromBottom = documentHeight - (currentScrollY + windowHeight);
-      const footerThreshold = 200; // Adjust this value to control when nav starts hiding
+      const footerThreshold = 200;
 
       if (distanceFromBottom <= footerThreshold) {
         setShowBottomNav(false);
@@ -77,7 +75,7 @@ export default function Header() {
 
   return (
     <>
-      {/* Desktop Header (md and up) - sticky + auto-hide on scroll */}
+      {/* Desktop Header */}
       <motion.header
         className="hidden md:block fixed top-0 w-full z-50"
         initial={{ y: 0, opacity: 1 }}
@@ -94,7 +92,7 @@ export default function Header() {
             animate={{
               background: [
                 "radial-gradient(60% 60% at 18% 62%, rgba(59,130,246,0.12), transparent 60%)",
-                "radial-gradient(60% 60% at 80% 30%, rgba(139,92,246,0.12), transparent 60%)",
+                "radial-gradient(60% 60% at 80% 30%, rgba(59,130,246,0.12), transparent 60%)",
                 "radial-gradient(60% 60% at 42% 82%, rgba(59,130,246,0.12), transparent 60%)",
               ],
             }}
@@ -104,7 +102,7 @@ export default function Header() {
           {/* Bar */}
           <nav className="relative bg-background/90 backdrop-blur-xl border-b border-border">
             <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-              {/* Brand (matches footer style) */}
+              {/* Brand */}
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -145,17 +143,22 @@ export default function Header() {
                       <Link
                         href={item.href}
                         className={[
-                          "relative inline-flex items-center gap-2 text-sm font-semibold transition-all",
+                          "relative inline-flex items-center gap-2 text-sm font-extrabold tracking-tight transition-all",
                           item.active
-                            ? "bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent"
+                            ? "text-blue-500"
                             : "text-muted-foreground hover:text-foreground",
                         ].join(" ")}
+                        style={{
+                          fontFamily:
+                            'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+                        }}
                       >
                         <item.icon className="w-4 h-4" />
-                        <span className="font-display tracking-tight">{item.label}</span>
+                        <span>{item.label}</span>
                         {item.active && (
                           <motion.span
-                            className="pointer-events-none absolute -bottom-3 left-0 right-0 mx-auto h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent"
+                            className="pointer-events-none absolute -bottom-3 left-0 right-0 mx-auto h-0.5 
+                                       bg-gradient-to-r from-transparent via-blue-500 to-transparent"
                             initial={{ width: 0 }}
                             animate={{ width: "100%" }}
                             transition={{ duration: 0.3, ease: easeOut }}
@@ -194,7 +197,7 @@ export default function Header() {
         </div>
       </motion.header>
 
-      {/* Small-screen top bar — only on Home, brand + theme, non-sticky */}
+      {/* Small-screen top bar */}
       {pathname === "/" && (
         <header className="md:hidden">
           <div className="w-full px-4 sm:px-5 py-2 bg-background/90 backdrop-blur-xl border-b border-border flex items-center justify-between">
@@ -232,7 +235,7 @@ export default function Header() {
         </header>
       )}
 
-      {/* Mobile Bottom Navigation — with animation and footer detection */}
+      {/* Mobile Bottom Navigation */}
       <motion.div
         className="md:hidden fixed bottom-3 left-0 right-0 z-[60] flex justify-center px-4"
         initial={{ y: 0, opacity: 1 }}
@@ -244,11 +247,11 @@ export default function Header() {
       >
         <nav
           className="
-      relative rounded-2xl px-2.5 py-2
-      bg-background/80 backdrop-blur-xl
-      border border-border/60 ring-1 ring-white/10
-      shadow-[0_12px_35px_-10px_rgba(0,0,0,0.35)]
-    "
+          relative rounded-2xl px-2.5 py-2
+          bg-background/80 backdrop-blur-xl
+          border border-border/60 ring-1 ring-white/10
+          shadow-[0_12px_35px_-10px_rgba(0,0,0,0.35)]
+        "
         >
           {/* Ambient gradient glow */}
           <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-500/10 via-indigo-500/10 to-purple-500/10" />
@@ -280,10 +283,10 @@ export default function Header() {
                     {active && (
                       <span
                         className="
-            absolute inset-0 rounded-xl
-            bg-blue-500/10 border border-blue-500/20
-            shadow-[0_8px_18px_-10px_rgba(59,130,246,0.55)]
-          "
+                        absolute inset-0 rounded-xl
+                        bg-blue-500/10 border border-blue-500/20
+                        shadow-[0_8px_18px_-10px_rgba(59,130,246,0.55)]
+                      "
                       />
                     )}
 
@@ -300,10 +303,10 @@ export default function Header() {
                     {active && (
                       <span
                         className="
-            absolute -bottom-1 h-1.5 w-1.5 rounded-full
-            bg-gradient-to-r from-blue-500 to-indigo-500
-            shadow-[0_0_9px_2px_rgba(59,130,246,0.55)]
-          "
+                        absolute -bottom-1 h-1.5 w-1.5 rounded-full
+                        bg-gradient-to-r from-blue-500 to-indigo-500
+                        shadow-[0_0_9px_2px_rgba(59,130,246,0.55)]
+                      "
                       />
                     )}
                   </Link>
@@ -315,14 +318,13 @@ export default function Header() {
           {/* Subtle top notch effect */}
           <div
             className="
-pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2
-h-2 w-20 rounded-b-2xl
-bg-gradient-to-b from-white/10 to-transparent
-"
+            pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2
+            h-2 w-20 rounded-b-2xl
+            bg-gradient-to-b from-white/10 to-transparent
+          "
           />
         </nav>
       </motion.div>
-
     </>
   );
 }

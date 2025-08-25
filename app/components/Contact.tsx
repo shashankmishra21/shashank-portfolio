@@ -7,7 +7,6 @@ import {
   Github,
   Linkedin,
   Twitter,
-  Sparkles,
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
@@ -27,7 +26,7 @@ export default function Contact() {
     setTimeout(() => setSent(false), 3000);
   };
 
-  // Deterministic particles for SSR/CSR consistency
+  // Particles
   const particles = useMemo(
     () =>
       [
@@ -90,39 +89,18 @@ export default function Contact() {
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.5, ease: easeOut }}
         >
-          <div className="inline-flex items-center gap-3 mb-3">
-           
-            <span className="text-xs md:text-sm font-semibold uppercase tracking-widest">
-              Contact
-            </span>
-            
-          </div>
 
-          {/* HEADLINE OPTIONS — pick one and keep it */}
-          {/* Option A (default): */}
+          <p className="text-xs md:text-sm tracking-widest font-semibold uppercase mb-2">
+            Contact
+          </p>
           <h2 className="text-3xl md:text-5xl font-display font-extrabold tracking-tight">
             <span className="text-blue-500">
               Build Something Exceptional Together
             </span>
           </h2>
-
-          {/* Option B:
-          <h2 className="text-3xl md:text-5xl font-display font-extrabold tracking-tight">
-            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
-              Let’s Turn Ideas Into Impact
-            </span>
-          </h2> */}
-
-          {/* Option C:
-          <h2 className="text-3xl md:text-5xl font-display font-extrabold tracking-tight">
-            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
-              From Concept to Production—Let’s Ship
-            </span>
-          </h2> */}
-
           <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
-            Open to full‑time roles and meaningful collaborations. Share a bit about your goals and
-            timeline—let’s see how I can help.
+            Open to full‑time roles and meaningful collaborations. Share a bit
+            about your goals and timeline—let’s see how I can help.
           </p>
           <div className="mt-3 h-px w-40 md:w-56 mx-auto bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
         </motion.div>
@@ -137,30 +115,35 @@ export default function Contact() {
             transition={{ duration: 0.6, ease: easeOut }}
           >
             <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-card/70 backdrop-blur-xl p-8 md:p-10 shadow-[0_10px_40px_-12px_rgba(59,130,246,0.25)]">
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-blue-500/12 via-purple-500/12 to-cyan-500/12 rounded-3xl blur-xl" />
-              <div className="pointer-events-none absolute -top-px -left-px -right-px h-px bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 rounded-t-3xl" />
-
               <form onSubmit={onSubmit} className="relative space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-foreground">Full Name *</label>
+                    <label className="block text-sm font-medium text-foreground">
+                      Full Name *
+                    </label>
                     <input
                       type="text"
                       required
-                      className="w-full rounded-xl border border-border/50 bg-background/60 backdrop-blur-sm px-4 py-3 text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/50 transition-all"
-                      placeholder="John Doe"
+                      className="w-full rounded-xl border border-border/50 bg-background/60 backdrop-blur-sm px-4 py-3 
+                                 text-foreground placeholder:text-slate-400 dark:placeholder:text-slate-500 
+                                 outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/50 transition-all"
+                      placeholder="Rishab Tripathi"
                       name="name"
                       autoComplete="name"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-foreground">Email Address *</label>
+                    <label className="block text-sm font-medium text-foreground">
+                      Email Address *
+                    </label>
                     <input
                       type="email"
                       required
-                      className="w-full rounded-xl border border-border/50 bg-background/60 backdrop-blur-sm px-4 py-3 text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/50 transition-all"
-                      placeholder="john@company.com"
+                      className="w-full rounded-xl border border-border/50 bg-background/60 backdrop-blur-sm px-4 py-3 
+                                 text-foreground placeholder:text-slate-400 dark:placeholder:text-slate-500 
+                                 outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/50 transition-all"
+                      placeholder="rishabtripathi@gmail.com"
                       name="email"
                       autoComplete="email"
                     />
@@ -171,7 +154,9 @@ export default function Contact() {
                   <label className="block text-sm font-medium text-foreground">Subject</label>
                   <input
                     type="text"
-                    className="w-full rounded-xl border border-border/50 bg-background/60 backdrop-blur-sm px-4 py-3 text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/50 transition-all"
+                    className="w-full rounded-xl border border-border/50 bg-background/60 backdrop-blur-sm px-4 py-3 
+                               text-foreground placeholder:text-slate-400 dark:placeholder:text-slate-500 
+                               outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/50 transition-all"
                     placeholder="Let’s discuss your project..."
                     name="subject"
                   />
@@ -182,7 +167,9 @@ export default function Contact() {
                   <textarea
                     required
                     rows={5}
-                    className="w-full rounded-xl border border-border/50 bg-background/60 backdrop-blur-sm px-4 py-3 text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/50 transition-all resize-none"
+                    className="w-full rounded-xl border border-border/50 bg-background/60 backdrop-blur-sm px-4 py-3 
+                               text-foreground placeholder:text-slate-400 dark:placeholder:text-slate-500 
+                               outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500/50 transition-all resize-none"
                     placeholder="Tell me about your project, timeline, and how we can work together..."
                     name="message"
                   />
@@ -196,14 +183,19 @@ export default function Contact() {
                   className="flex items-center gap-3 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-600 dark:text-emerald-400"
                 >
                   <CheckCircle2 className="w-5 h-5" />
-                  <span className="text-sm font-medium">Message sent! I’ll reply within 24 hours.</span>
+                  <span className="text-sm font-medium">
+                    Message sent! I’ll reply within 24 hours.
+                  </span>
                 </motion.div>
 
-                {/* Submit */}
+                {/* Submit Button - Blue only */}
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full group relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
+                  className="w-full group relative bg-gradient-to-r from-blue-500 to-blue-700 
+                             hover:from-blue-600 hover:to-blue-800 
+                             text-white font-semibold px-8 py-4 rounded-xl transition-all 
+                             disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.15, ease: easeOut }}
@@ -232,7 +224,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Right: Social + Quick Stats (Other ways removed) */}
+          {/* Right: Socials + Quick Stats (unchanged) */}
           <motion.div
             className="lg:col-span-5 space-y-8"
             initial={{ opacity: 0, x: 18 }}
@@ -296,7 +288,7 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        {/* Bottom CTA strip */}
+        {/* Bottom CTA */}
         <motion.div
           className="text-center mt-16 pt-8 border-t border-border/50"
           initial={{ opacity: 0, y: 12 }}
