@@ -476,7 +476,7 @@ export default function Hero() {
                 transition={{ duration: 0.2, ease: easeOut }}
               >
                 <Link
-                  href="/resume"
+                  href="/Resume"
                   className="
                     inline-flex items-center justify-center
                     bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800
