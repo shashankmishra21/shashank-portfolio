@@ -97,11 +97,11 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: easeOut }}
         >
-          <p className="text-xs md:text-sm tracking-widest text-blue-500/80 font-semibold uppercase">
+          <p className="text-xs md:text-sm tracking-widest font-semibold uppercase">
             About
           </p>
           <h2 className="mt-2 text-3xl md:text-5xl font-display font-extrabold tracking-tight">
-            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-blue-500">
               Builder of Scalable, Thoughtful Software
             </span>
           </h2>
