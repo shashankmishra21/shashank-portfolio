@@ -6,7 +6,8 @@ import { useCallback } from "react";
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-export default function esume() {
+// ✅ Change 'esume' to 'Resume' (capitalized)
+export default function Resume() {
   const handleDownload = useCallback(() => {
     const link = document.createElement("a");
     link.href = "/Resume-Shashank_Mishra.pdf";
@@ -22,11 +23,9 @@ export default function esume() {
 
   const highlights = [
     { text: "Full-stack expertise", icon: CheckCircle },
-    // { text: "1.5+ years hands-on experience", icon: CheckCircle },
     { text: "6+ production-ready projects", icon: CheckCircle },
     { text: "Strong DSA & problem-solving", icon: CheckCircle },
     { text: "8.9 CPI academic excellence", icon: Star },
-
   ];
 
   return (
@@ -113,7 +112,7 @@ export default function esume() {
                     Shashank Mishra · Full Stack Web Developer
                   </h2>
                   <p className="text-sm md:text-base text-muted-foreground">
-                    I specialize in React, Next.js, Node.js, Python, Django, and cloud technologies, and I’m ready to deliver clean code, scalable solutions, and measurable impact for your team’s success.
+                    I specialize in React, Next.js, Node.js, Python, Django, and cloud technologies, and I'm ready to deliver clean code, scalable solutions, and measurable impact for your team's success.
                   </p>
                 </div>
 
@@ -156,13 +155,6 @@ export default function esume() {
                     Connect on LinkedIn
                   </button>
                 </div>
-
-                {/* Trust indicators */}
-                {/* <div className="mt-6 pt-6 border-t border-border/50">
-                  <p className="text-xs md:text-sm text-muted-foreground text-center md:text-left">
-                    ✨ ATS-optimized format · 📄 Clean, professional layout · 🚀 Updated with latest projects
-                  </p>
-                </div> */}
               </div>
             </div>
           </motion.div>
