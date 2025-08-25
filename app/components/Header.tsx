@@ -70,7 +70,7 @@ export default function Header() {
       { href: "/", icon: Home, label: "HOME", active: pathname === "/" },
       { href: "/projects", icon: Code, label: "PROJECTS", active: pathname === "/projects" },
       { href: "/skills", icon: User, label: "SKILLS", active: pathname === "/skills" },
-      { href: "/resume", icon: FileText, label: "RESUME", active: pathname === "/resume" },
+      { href: "/Resume", icon: FileText, label: "RESUME", active: pathname === "/Resume" },
     ],
     [pathname]
   );
