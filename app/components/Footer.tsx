@@ -49,8 +49,6 @@ export default function Footer() {
     },
   ];
 
-  const year = new Date().getFullYear();
-
   return (
     <footer id="site-footer" className="relative mt-16 bg-background border-t border-border/50 overflow-hidden">
       {/* Enhanced ambient gradient glows */}
