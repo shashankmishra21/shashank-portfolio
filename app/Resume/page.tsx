@@ -6,12 +6,12 @@ import { useCallback } from "react";
 
 const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// ✅ Change 'esume' to 'Resume' (capitalized)
 export default function Resume() {
   const handleDownload = useCallback(() => {
     const link = document.createElement("a");
     link.href = "/Resume-Shashank_Mishra.pdf";
     link.download = "Resume-Shashank_Mishra.pdf";
+    link.style.display = "none";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -130,7 +130,9 @@ export default function Resume() {
                       hover:brightness-[1.05] active:brightness-[0.95]
                       transition-all duration-200
                       w-full sm:w-auto
+                      focus:outline-none focus:ring-2 focus:ring-blue-500/50
                     "
+                    aria-label="Download Shashank's Resume"
                   >
                     <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
                     Download Resume
@@ -149,7 +151,9 @@ export default function Resume() {
                       hover:shadow-[0_8px_20px_-8px_rgba(59,130,246,0.3)]
                       transition-all duration-200
                       w-full sm:w-auto
+                      focus:outline-none focus:ring-2 focus:ring-blue-500/50
                     "
+                    aria-label="Connect with Shashank on LinkedIn"
                   >
                     <ExternalLink className="w-5 h-5 text-indigo-500 group-hover:scale-110 transition-transform" />
                     Connect on LinkedIn
