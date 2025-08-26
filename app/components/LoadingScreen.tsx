@@ -15,7 +15,6 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
   const [progress, setProgress] = useState(0);
   const [msgIdx, setMsgIdx] = useState(0);
 
-  // Tighter, product-minded copy
   const messages = useMemo(
     () => [
       "Bootstrapping runtime…",
@@ -89,7 +88,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
           style={{
             backgroundImage: `
               linear-gradient(90deg, rgba(59,130,246,0.18) 1px, transparent 1px),
-              linear-gradient(0deg, rgba(99,102,241,0.14) 1px, transparent 1px)
+              linear-gradient(0deg, rgba(37,99,235,0.14) 1px, transparent 1px)
             `,
             backgroundSize: "50px 50px, 50px 50px",
           }}
@@ -104,7 +103,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
               linear-gradient(180deg,
                 transparent 0%,
                 rgba(59,130,246,0.08) 2%,
-                rgba(59,130,246,0.22) 3%,
+                rgba(37,99,235,0.22) 3%,
                 rgba(59,130,246,0.08) 4%,
                 transparent 6%
               )
@@ -155,18 +154,20 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
           <div className="px-5 sm:px-8 py-8 sm:py-10">
             {/* Title with gradient motion */}
             <motion.h1
-              className="text-center text-2xl sm:text-4xl md:text-5xl font-extrabold mb-6 relative"
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: easeOut }}
+              className="text-center text-2xl sm:text-4xl md:text-5xl font-bold mb-6"
+             
+style={{
+  fontFamily: "'JetBrains Mono', monospace",
+  fontWeight: "300"
+}}
             >
               <motion.span
-                className="bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent"
                 animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                 style={{ backgroundSize: "200% 100%" }}
               >
-                Initializing Your Session
+                initializing your session
               </motion.span>
             </motion.h1>
 
@@ -183,8 +184,8 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
                   <defs>
                     <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="0%">
                       <stop offset="0%" stopColor="#60A5FA" />
-                      <stop offset="50%" stopColor="#8B5CF6" />
-                      <stop offset="100%" stopColor="#22D3EE" />
+                      <stop offset="50%" stopColor="#2563EB" />
+                      <stop offset="100%" stopColor="#0EA5E9" />
                     </linearGradient>
                   </defs>
                   <circle cx="60" cy="60" r="52" stroke="rgba(59,130,246,0.2)" strokeWidth="10" fill="none" />
@@ -225,14 +226,14 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
                   <span>{progress}/100</span>
                 </div>
                 <div className="relative h-3.5 rounded-full bg-gray-800 border border-gray-700 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-indigo-900/20" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-blue-800/20" />
                   <motion.div
                     className="h-full rounded-full relative overflow-hidden"
                     initial={{ width: "0%" }}
                     animate={{ width: `${progress}%` }}
                     transition={{ duration: 0.3, ease: easeOut }}
                     style={{
-                      background: "linear-gradient(90deg, #22d3ee, #3b82f6, #8b5cf6)",
+                      background: "linear-gradient(90deg,#0ea5e9,#3b82f6,#2563eb)",
                       boxShadow: "0 0 18px rgba(59,130,246,0.6)",
                     }}
                   >
@@ -318,7 +319,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
 
             {/* Corner accents */}
             <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-xl" />
-            <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-indigo-400/20 to-transparent rounded-full blur-xl" />
+            <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-blue-400/20 to-transparent rounded-full blur-xl" />
           </div>
         </motion.div>
       </div>
