@@ -197,7 +197,7 @@ export default function Header() {
         </div>
       </motion.header>
 
-      {/* Small-screen top bar — now on all pages */}
+      {/* Small-screen top bar — always rendered */}
       <header className="md:hidden">
         <div className="w-full px-4 sm:px-5 py-2 bg-background/90 backdrop-blur-xl border-b border-border flex items-center justify-between">
           {/* Compact brand: SM. */}
@@ -233,9 +233,9 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Bottom Navigation */}
+      {/* Mobile Bottom Navigation — unchanged */}
       <motion.div
-        className="md:hidden fixed bottom-3 left-0 right-0 z- flex justify-center px-4"
+        className="md:hidden fixed bottom-3 left-0 right-0 z-[12] flex justify-center px-4"
         initial={{ y: 0, opacity: 1 }}
         animate={{
           y: showBottomNav ? 0 : 100,
