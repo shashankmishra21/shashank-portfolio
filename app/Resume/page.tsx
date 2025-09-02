@@ -176,7 +176,7 @@ export default function Resume() {
           </motion.div>
 
           {/* Social proof */}
-          <motion.div
+          {/* <motion.div
             className="mt-8 text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -185,7 +185,7 @@ export default function Resume() {
             <p className="text-xs md:text-sm text-muted-foreground">
               💼 Open to internships or full-time opportunities
             </p>
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
     </div>

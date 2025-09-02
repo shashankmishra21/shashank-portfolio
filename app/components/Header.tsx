@@ -158,7 +158,7 @@ export default function Header() {
                         {item.active && (
                           <motion.span
                             className="pointer-events-none absolute -bottom-3 left-0 right-0 mx-auto h-0.5 
-                                       bg-gradient-to-r from-transparent via-blue-500 to-transparent"
+                                   bg-gradient-to-r from-transparent via-blue-500 to-transparent"
                             initial={{ width: 0 }}
                             animate={{ width: "100%" }}
                             transition={{ duration: 0.3, ease: easeOut }}
@@ -197,47 +197,45 @@ export default function Header() {
         </div>
       </motion.header>
 
-      {/* Small-screen top bar */}
-      {pathname === "/" && (
-        <header className="md:hidden">
-          <div className="w-full px-4 sm:px-5 py-2 bg-background/90 backdrop-blur-xl border-b border-border flex items-center justify-between">
-            {/* Compact brand: SM. */}
-            <Link href="/" className="inline-flex items-center" aria-label="Home">
-              <span
-                className="text-lg font-extrabold tracking-tight"
-                style={{
-                  fontFamily:
-                    'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-                }}
-              >
-                <h3>
-                  <span className="text-foreground">S</span>
-                  <span className="text-blue-600 dark:text-blue-500">M</span>
-                  <span className="text-blue-600 dark:text-blue-500">.</span>
-                </h3>
-              </span>
-            </Link>
-
-            {/* Theme toggle */}
-            <button
-              onClick={toggleDarkMode}
-              className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-accent/60 backdrop-blur-sm text-foreground hover:bg-accent transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
-              aria-label="Toggle theme"
-              title="Toggle theme"
+      {/* Small-screen top bar — now on all pages */}
+      <header className="md:hidden">
+        <div className="w-full px-4 sm:px-5 py-2 bg-background/90 backdrop-blur-xl border-b border-border flex items-center justify-between">
+          {/* Compact brand: SM. */}
+          <Link href="/" className="inline-flex items-center" aria-label="Home">
+            <span
+              className="text-lg font-extrabold tracking-tight"
+              style={{
+                fontFamily:
+                  'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+              }}
             >
-              {darkMode ? (
-                <Sun size={18} className="text-amber-500" />
-              ) : (
-                <Moon size={18} className="text-blue-500" />
-              )}
-            </button>
-          </div>
-        </header>
-      )}
+              <h3>
+                <span className="text-foreground">S</span>
+                <span className="text-blue-600 dark:text-blue-500">M</span>
+                <span className="text-blue-600 dark:text-blue-500">.</span>
+              </h3>
+            </span>
+          </Link>
+
+          {/* Theme toggle */}
+          <button
+            onClick={toggleDarkMode}
+            className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-accent/60 backdrop-blur-sm text-foreground hover:bg-accent transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
+            aria-label="Toggle theme"
+            title="Toggle theme"
+          >
+            {darkMode ? (
+              <Sun size={18} className="text-amber-500" />
+            ) : (
+              <Moon size={18} className="text-blue-500" />
+            )}
+          </button>
+        </div>
+      </header>
 
       {/* Mobile Bottom Navigation */}
       <motion.div
-        className="md:hidden fixed bottom-3 left-0 right-0 z-[60] flex justify-center px-4"
+        className="md:hidden fixed bottom-3 left-0 right-0 z- flex justify-center px-4"
         initial={{ y: 0, opacity: 1 }}
         animate={{
           y: showBottomNav ? 0 : 100,

@@ -4,7 +4,7 @@ import Link from "next/link";
 const projects = [
   {
     title: "Linkify — Link Management SaaS",
-    img: "/images/projects/linkify-thumb.jpg",
+    img: "/linkify-thumb.png",
     live: "https://linkify-web.netlify.app",
     code: "https://github.com/shashankmishra21",
     category: "SaaS",
@@ -14,7 +14,7 @@ const projects = [
   },
   {
     title: "CourseStack — eLearning Web App",
-    img: "/images/projects/coursestack-thumb.jpg",
+    img: "/coursestack-thumb.png",
     live: "https://coursestack.vercel.app",
     code: "https://github.com/shashankmishra21",
     category: "eLearning",
