@@ -99,7 +99,7 @@ export default function SkillsPage() {
       </div>
 
       {/* Content - no container constraints */}
-      <div className="max-w-6xl mx-auto px-5 md:px-6 py-16 md:py-20 max-[768px]:pb-[calc(96px+env(safe-area-inset-bottom))]">
+      <div className="max-w-6xl mx-auto px-5 md:px-6 py-2 md:py-20 max-[768px]:pb-[calc(96px+env(safe-area-inset-bottom))]">
         {/* Title */}
         <motion.div
           className="text-center mb-12 md:mb-16"

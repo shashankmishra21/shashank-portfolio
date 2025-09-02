@@ -43,7 +43,7 @@ export default function Resume() {
         transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
       />
 
-      <section className="pt-24 md:pt-28 pb-16 md:pb-20 px-5 md:px-6 max-[768px]:pb-[calc(100px+env(safe-area-inset-bottom))]">
+      <section className="pt-8 md:pt-28 pb-16 md:pb-20 px-5 md:px-6 max-[768px]:pb-[calc(100px+env(safe-area-inset-bottom))]">
         <div className="max-w-4xl mx-auto">
           {/* Enhanced heading */}
           <motion.div
@@ -52,11 +52,8 @@ export default function Resume() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: easeOut }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 text-emerald-500 text-xs font-semibold mb-4">
-              <CheckCircle className="w-4 h-4" />
-              Open for full time / internships opportunities
-            </div>
-            <div className="text-center mb-12">
+            
+            <div className="text-center mb-6">
               <p className="text-xs md:text-sm tracking-widest font-semibold uppercase">
                 Resume
               </p>
@@ -67,6 +64,12 @@ export default function Resume() {
 
               </h2>
             </div>
+
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 text-emerald-500 text-xs font-semibold mb-0">
+              <CheckCircle className="w-4 h-4" />
+              Open to internships or full time opportunities
+            </div>
+            
           </motion.div>
 
 
@@ -113,17 +116,17 @@ export default function Resume() {
               </div>
 
               <div className="w-full">
-                <div className="mb-6">
+                {/* <div className="mb-6">
                   <h2 className="text-xl md:text-2xl font-display font-bold text-foreground mb-2">
                     Shashank Mishra
                   </h2>
                   <p className="text-sm md:text-base text-muted-foreground">
                     I specialize in React, Next.js, Node.js, Python, Django, and cloud technologies, and I&apos;m ready to deliver clean code, scalable solutions, and measurable impact for your team&apos;s success.
                   </p>
-                </div>
+                </div> */}
 
                 {/* Call-to-action buttons */}
-                <div className="flex flex-col sm:flex-row items-center gap-4">
+                <div className="flex flex-col sm:flex-row items-center md:justify-center gap-4">
                   {/* Download Resume Button */}
                   <button
                     onClick={handleDownload}

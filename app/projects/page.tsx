@@ -37,7 +37,7 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <section className="bg-background">
-      <div className="max-w-6xl mx-auto px-5 md:px-6 py-16 md:py-20">
+      <div className="max-w-6xl mx-auto px-5 md:px-6 py-2 md:py-20">
         <div className="text-center mb-12">
           <p className="text-xs md:text-sm tracking-widest font-semibold uppercase mt-5">
             Projects
