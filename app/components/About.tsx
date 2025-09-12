@@ -12,9 +12,9 @@ type Section = { title: string; icon: React.ElementType; items: Skill[] };
 export default function About() {
   const stats: Stat[] = useMemo(
     () => [
-      { label: "Years Experience", value: "1.5+", hint: "Hands-on production work" },
-      { label: "Projects Delivered", value: "6+", hint: "Finance, eLearning, Portfolio" },
-      { label: "Internships", value: "3", hint: "Backend + Full‑stack" },
+      { label: "Years Experience", value: "1.5+", hint: "Hands on production work" },
+      { label: "Projects Delivered", value: "6+", hint: "eLearning, Collaborative Tool, Portfolio" },
+      { label: "Internships", value: "3", hint: "Backend + FullStack" },
       { label: "CPI", value: "8.9", hint: "Consistently high" },
     ],
     []
@@ -48,8 +48,8 @@ export default function About() {
         items: [
           { name: "MongoDB", level: 85 },
           { name: "PostgreSQL", level: 80 },
-          { name: "AWS", level: 70 },
-          { name: "Docker", level: 75 },
+          // { name: "AWS", level: 70 },
+          // { name: "Docker", level: 75 },
         ],
       },
       {
@@ -58,8 +58,8 @@ export default function About() {
         items: [
           { name: "Git", level: 90 },
           { name: "CI/CD", level: 75 },
-          { name: "Linux", level: 80 },
-          { name: "Nginx", level: 70 },
+          // { name: "Linux", level: 80 },
+          // { name: "Nginx", level: 70 },
         ],
       },
     ],

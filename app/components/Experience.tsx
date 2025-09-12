@@ -18,9 +18,9 @@ const experiences: ExperienceItem[] = [
     location: "Gurgaon (Remote)",
     period: "Aug 2025 – Present",
     description: [
-      "Contributing to backend systems for scalable applications.",
-      "Designing and delivering backend solutions aligned with business needs.",
-      "Hands-on DevOps with AWS, CI/CD, Docker.",
+      "Contributing to backend solutions for scalable applications.",
+      "Refactored a large CI/CD YAML file into 15 modular files for cleaner endpoint management and smoother pipeline execution.",
+  
     ],
     highlight: true,
   },
@@ -30,9 +30,9 @@ const experiences: ExperienceItem[] = [
     location: "Hybrid",
     period: "May – June 2025",
     description: [
-      "JWT auth & sessions via REST; -35% auth failures.",
-      "Real-time booking module (Node/Express); -40% latency, 1,200+/mo.",
-      "Rebuilt 10+ UI components; +25% engagement across 20+ portals.",
+      "Built secure authentication and session handling using JWT & REST APIs, reducing authentication failures by 35%.",
+      "Developed a real-time booking module with Node.js & Express.js for faster, scalable performance.",
+      "Delivered 10+ reusable UI components to enhance frontend consistency and speed up development.",
     ],
   },
   {
