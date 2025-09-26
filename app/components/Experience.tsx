@@ -12,18 +12,7 @@ type ExperienceItem = {
 };
 
 const experiences: ExperienceItem[] = [
-  {
-    title: "Backend Intern",
-    company: "Paynexa Systems & Technologies",
-    location: "Gurgaon (Remote)",
-    period: "Aug 2025 – Present",
-    description: [
-      "Contributing to backend solutions for scalable applications.",
-      "Refactored a large CI/CD YAML file into 15 modular files for cleaner endpoint management and smoother pipeline execution.",
   
-    ],
-    highlight: true,
-  },
   {
     title: "Software Engineer Intern",
     company: "Innoeed Systems",

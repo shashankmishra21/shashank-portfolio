@@ -13,9 +13,9 @@ export default function About() {
   const stats: Stat[] = useMemo(
     () => [
       { label: "Years Experience", value: "1.5+", hint: "Hands on production work" },
-      { label: "Projects Delivered", value: "6+", hint: "eLearning, Collaborative Tool, Portfolio" },
-      { label: "Internships", value: "3", hint: "Backend + FullStack" },
-      { label: "CPI", value: "8.9", hint: "Consistently high" },
+      { label: "Projects Delivered", value: "5+", hint: "eLearning, Collaborative Tool, Portfolio" },
+      { label: "Internships", value: "2", hint: "FullStack" },
+      { label: "CGPA", value: "8.9", hint: "Consistently high" },
     ],
     []
   );
@@ -28,8 +28,8 @@ export default function About() {
         items: [
           { name: "React", level: 90 },
           { name: "Next.js", level: 85 },
-          { name: "TypeScript", level: 85 },
-          { name: "Tailwind CSS", level: 95 },
+          { name: "TypeScript", level: 80 },
+          { name: "Tailwind CSS", level: 85 },
         ],
       },
       {
@@ -48,7 +48,8 @@ export default function About() {
         items: [
           { name: "MongoDB", level: 85 },
           { name: "PostgreSQL", level: 80 },
-          // { name: "AWS", level: 70 },
+          { name: "AWS -EC2", level: 70 },
+          
           // { name: "Docker", level: 75 },
         ],
       },
@@ -57,8 +58,8 @@ export default function About() {
         icon: Wrench,
         items: [
           { name: "Git", level: 90 },
-          { name: "CI/CD", level: 75 },
-          // { name: "Linux", level: 80 },
+          { name: "CI/CD", level: 70 },
+          { name: "Linux", level: 80 },
           // { name: "Nginx", level: 70 },
         ],
       },

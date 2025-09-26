@@ -24,14 +24,14 @@ const projects: Project[] = [
     category: "SaaS",
     year: "2024",
   },
-  {
-    title: "CourseStack – eLearning Web App",
-    img: "/images/projects/coursestack-thumb.jpg",
-    liveDemo: "https://coursestack.vercel.app",
-    github: "https://github.com/shashankmishra21",
-    category: "eLearning",
-    year: "2024",
-  },
+  // {
+  //   title: "CourseStack – eLearning Web App",
+  //   img: "/images/projects/coursestack-thumb.jpg",
+  //   liveDemo: "https://coursestack.vercel.app",
+  //   github: "https://github.com/shashankmishra21",
+  //   category: "eLearning",
+  //   year: "2024",
+  // },
   {
     title: "Personal Portfolio",
     img: "/images/projects/portfolio-thumb.jpg",

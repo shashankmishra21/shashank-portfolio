@@ -97,7 +97,7 @@ export default function Footer() {
             
             {/* Updated tagline */}
             <p className="text-sm md:text-base text-muted-foreground">
-              Full Stack Developer • Backend Engineer • DevOps Practitioner
+              {/* Full Stack Developer  • Backend Engineer • DevOps Practitioner  */}
             </p>
           </motion.div>
 
