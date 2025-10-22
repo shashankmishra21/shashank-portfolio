@@ -17,28 +17,28 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Linkify – Link Management SaaS Platform",
-    img: "/images/projects/linkify-thumb.jpg",
-    liveDemo: "https://linkify-web.netlify.app",
-    github: "https://github.com/shashankmishra21",
-    category: "SaaS",
-    year: "2024",
+     title: "BrainCache",
+    img: "/BrainCache-thumb.png",
+    liveDemo: "https://braincache.vercel.app/",
+    github: "https://github.com/shashankmishra21/Frontend-Brain-App.git",
+    // category: "SaaS",
+    // year: "2024",
   },
-  // {
-  //   title: "CourseStack – eLearning Web App",
-  //   img: "/images/projects/coursestack-thumb.jpg",
-  //   liveDemo: "https://coursestack.vercel.app",
-  //   github: "https://github.com/shashankmishra21",
-  //   category: "eLearning",
-  //   year: "2024",
-  // },
+  {
+    title: "CourseStack",
+    img: "/coursestack-thumb.png",
+    liveDemo: "https://course-stack-seven.vercel.app/",
+    github: "https://github.com/shashankmishra21/CourseStack.git",
+    // category: "eLearning",
+    // year: "2024",
+  },
   {
     title: "Personal Portfolio",
-    img: "/images/projects/portfolio-thumb.jpg",
-    liveDemo: "#",
-    github: "https://github.com/shashankmishra21",
-    category: "Portfolio",
-    year: "2025",
+    img: "/Portfolio.png",
+    liveDemo: "https://shashanktech.vercel.app/",
+    github: "https://github.com/shashankmishra21/shashank-portfolio.git",
+    // category: "Portfolio",
+    // year: "2025",
   },
 ];
 

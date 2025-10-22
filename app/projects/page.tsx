@@ -19,14 +19,12 @@ const projects = [
     blurb: "An end-to-end learning management system using React, Node.js, Express, and MongoDB with real-time enrollment, role-based access control, and progress tracking. Designed with modular architecture and optimized APIs to deliver a seamless, scalable learning experience.",
   },
   {
-    title: "Portfolio — Performance-first",
-    img: "/images/projects/portfolio-thumb.jpg",
-    live: "#",
-    code: "https://github.com/shashankmishra21",
-    category: "Portfolio",
-    year: "2025",
+    title: "Personal Portfolio",
+    img: "/Portfolio.png",
+    live: "https://shashanktech.vercel.app/",
+    code: "https://github.com/shashankmishra21/shashank-portfolio.git",
     tech: ["Next.js", "Tailwind", "Framer Motion"],
-    blurb: "Animated, accessible, recruiter-friendly portfolio with a premium feel.",
+    blurb: "An immersive, animated developer portfolio focused on accessibility, performance, and recruiter experience—built with Next.js and Framer Motion.",
   },
 ];
 
@@ -54,7 +52,7 @@ export default function ProjectsPage() {
               key={p.title}
               className="group rounded-2xl overflow-hidden bg-card border border-border shadow-sm hover:shadow-xl transition-shadow"
             >
-              <div className="relative aspect-[16/10] overflow-hidden">
+              <div className="relative aspect-[16/8] overflow-hidden">
                 <Image
                   src={p.img}
                   alt={p.title}
