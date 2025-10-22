@@ -9,8 +9,8 @@ const easeOut: [number, number, number, number] = [0.16, 1, 0.3, 1];
 export default function Resume() {
   const handleDownload = useCallback(() => {
     const link = document.createElement("a");
-    link.href = "/Resume-Shashank_Mishra.pdf";
-    link.download = "Resume-Shashank_Mishra.pdf";
+    link.href = "/Resume_Shashank_Mishra.pdf";
+    link.download = "Resume_Shashank_Mishra.pdf";
     link.style.display = "none";
     document.body.appendChild(link);
     link.click();

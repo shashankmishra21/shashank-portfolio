@@ -3,25 +3,21 @@ import Link from "next/link";
 
 const projects = [
   {
-    title: "Linkify — Link Management SaaS",
-    img: "/linkify-thumb.png",
-    live: "https://linkify-web.netlify.app",
-    code: "https://github.com/shashankmishra21",
-    category: "SaaS",
-    year: "2024",
-    tech: ["Next.js", "Node.js", "MongoDB", "Stripe", "JWT"],
-    blurb: "Role-based access, analytics, branded links, and secure auth for teams and creators.",
+    title: "BrainCache",
+    img: "/BrainCache-thumb.png",
+    live: "https://braincache.vercel.app/",
+    code: "https://github.com/shashankmishra21/Frontend-Brain-App.git",
+    tech: ["React.js", "TypeScript", "TailwindCSS", "Node.js", "Express.js", "MongoDB", "JWT"],
+    blurb: "A full-stack productivity platform that enables users to collect, organize & share knowledge efficiently. Features real-time data sync, secure JWT-based authentication, advanced multi-tag filtering & shareable collections optimized for performance & scalability",
   },
-  // {
-  //   title: "CourseStack — eLearning Web App",
-  //   img: "/coursestack-thumb.png",
-  //   live: "https://coursestack.vercel.app",
-  //   code: "https://github.com/shashankmishra21",
-  //   category: "eLearning",
-  //   year: "2024",
-  //   tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Stripe"],
-  //   blurb: "Streaming, progress tracking, quiz modules, dashboards, and payments.",
-  // },
+  {
+    title: "CourseStack",
+    img: "/coursestack-thumb.png",
+    live: "https://course-stack-seven.vercel.app/",
+    code: "https://github.com/shashankmishra21/CourseStack.git",
+    tech: ["React.js", "TypeScript", "MongoDB", "Node.js", "Express.js", "Stripe"],
+    blurb: "An end-to-end learning management system using React, Node.js, Express, and MongoDB with real-time enrollment, role-based access control, and progress tracking. Designed with modular architecture and optimized APIs to deliver a seamless, scalable learning experience.",
+  },
   {
     title: "Portfolio — Performance-first",
     img: "/images/projects/portfolio-thumb.jpg",
@@ -66,36 +62,25 @@ export default function ProjectsPage() {
                   sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 text-xs font-semibold bg-blue-500/90 text-white rounded-full">
-                    {p.category}
-                  </span>
-                </div>
-                <div className="absolute top-4 right-4">
-                  <span className="px-3 py-1 text-xs font-semibold bg-black/50 text-white rounded-full">
-                    {p.year}
-                  </span>
-                </div>
               </div>
 
               <div className="p-5">
                 <h3 className="text-lg md:text-xl font-display font-bold text-foreground">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{p.blurb}</p>
+                <p className="mt-2 text-sm text-muted-foreground line-clamp-7">{p.blurb}</p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {p.tech.slice(0, 4).map((t) => (
+                  {p.tech.slice(0, 10).map((t) => (
                     <span key={t} className="px-2 py-1 text-xs bg-muted text-muted-foreground rounded-full">
                       {t}
                     </span>
                   ))}
-                  {p.tech.length > 4 && (
+                  {/* {p.tech.length > 4 && (
                     <span className="px-2 py-1 text-xs bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-full">
                       +{p.tech.length - 4} more
                     </span>
-                  )}
+                  )} */}
                 </div>
 
                 <div className="mt-5 flex items-center gap-4">
