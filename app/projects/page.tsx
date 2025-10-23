@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 const projects = [
   {
@@ -46,14 +46,23 @@ const container = {
   },
 };
 
-const card = {
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.38, ease: [0.16, 1, 0.3, 1] } },
-};
+const easeOut = [0.16, 1, 0.3, 1] as const;
 
-const imageIn = {
-  hidden: { scale: 0.98, opacity: 0.0 },
-  show: { scale: 1, opacity: 1, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
+const card: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.38, ease: easeOut },
+  },
+};
+const imageIn: Variants = {
+  hidden: { scale: 0.98, opacity: 0 },
+  show: {
+    scale: 1,
+    opacity: 1,
+    transition: { duration: 0.45, ease: easeOut },
+  },
 };
 
 export default function ProjectsPage() {
