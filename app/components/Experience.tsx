@@ -110,7 +110,7 @@ export default function Experience() {
           <p className="text-[11px] md:text-xs tracking-widest font-semibold uppercase">
             Experience
           </p>
-          <h2 className="mt-1 text-2xl md:text-4xl font-display font-extrabold tracking-tight">
+          <h2 className="mt-1 text-2xl md:text-5xl font-display font-extrabold tracking-tight">
             <span className="text-blue-500">
               Impact & Outcomes
             </span>

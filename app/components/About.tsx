@@ -14,7 +14,7 @@ export default function About() {
     () => [
       { label: "Years Experience", value: "1.5+", hint: "Hands on production work" },
       { label: "Projects Delivered", value: "5+", hint: "eLearning, Collaborative Tool, Portfolio" },
-      { label: "Internships", value: "2", hint: "FullStack" },
+      { label: "Internships", value: "2", hint: "Full-Stack" },
       { label: "CGPA", value: "8.9", hint: "Consistently high" },
     ],
     []
@@ -101,7 +101,7 @@ export default function About() {
           <p className="text-xs md:text-sm tracking-widest font-semibold uppercase">
             About
           </p>
-          <h2 className="mt-2 text-3xl md:text-5xl font-display font-extrabold tracking-tight">
+          <h2 className="mt-2 text-2xl md:text-5xl font-display font-extrabold tracking-tight">
             <span className="text-blue-500">
               Builder of Scalable, Thoughtful Software
             </span>

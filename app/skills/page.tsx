@@ -22,9 +22,9 @@ type Section = { title: string; icon: React.ElementType; items: Skill[] };
 export default function SkillsPage() {
   const stats: Stat[] = useMemo(
     () => [
-      { label: "Years Experience", value: "2+", hint: "Hands-on production work" },
-      { label: "Projects Delivered", value: "6+", hint: "SaaS, eLearning, Portfolio" },
-      { label: "Internships", value: "3", hint: "Backend + Full‑stack" },
+      { label: "Years Experience", value: "1.5+", hint: "Hands-on production work" },
+      { label: "Projects Delivered", value: "5+", hint: "eLearning, Collaborative Tool, Portfolio" },
+      { label: "Internships", value: "2", hint: "Full‑Stack" },
       { label: "CPI", value: "8.9", hint: "Consistently high" },
     ],
     []
