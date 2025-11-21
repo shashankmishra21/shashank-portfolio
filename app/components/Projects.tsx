@@ -33,6 +33,14 @@ const projects: Project[] = [
     // year: "2024",
   },
   {
+    title: "AstraSky",
+    img: "/AstraSky.png",
+    liveDemo: "https://astrasky.vercel.app",
+    github: "https://github.com/shashankmishra21/AstraSky.git",
+    // category: "Frontend",
+    // year: "2024",
+  },
+  {
     title: "Personal Portfolio",
     img: "/Portfolio.png",
     liveDemo: "https://shashanktech.vercel.app/",
