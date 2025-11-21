@@ -8,7 +8,7 @@ const projects = [
   {
     title: "BrainCache",
     img: "/BrainCache-thumb.png",
-    live: "https://braincache.vercel.app/",
+    live: "https://braincache.vercel.app",
     code: "https://github.com/shashankmishra21/Frontend-Brain-App.git",
     tech: ["React.js", "TypeScript", "TailwindCSS", "Node.js", "Express.js", "MongoDB", "JWT"],
     blurb:
@@ -17,11 +17,20 @@ const projects = [
   {
     title: "CourseStack",
     img: "/coursestack-thumb.png",
-    live: "https://course-stack-seven.vercel.app/",
+    live: "https://coursestack-elearning.vercel.app",
     code: "https://github.com/shashankmishra21/CourseStack.git",
     tech: ["React.js", "TypeScript", "MongoDB", "Node.js", "Express.js", "Stripe"],
     blurb:
       "An end-to-end learning management system using React, Node.js, Express, and MongoDB with real-time enrollment, role-based access control, and progress tracking. Designed with modular architecture and optimized APIs to deliver a seamless, scalable learning experience.",
+  },
+   {
+    title: "AstraSky - Real-Time Astronomy Dashboard ",
+    img: "/AstraSky.png",
+    live: "https://astrasky.vercel.app",
+    code: "https://github.com/shashankmishra21/AstraSky.git",
+    tech: ["React.js", "TypeScript", "TailwindCSS", 'Framer Motion'],
+    blurb:
+      "A responsive web interface designed to help astronomy clubs, students, and sky-watchers identify the best night-sky viewing locations across Chhattisgarh. It displays **real-time metrics** such as star visibility score, cloud cover, and light pollution levels through an interactive and user-friendly UI.",
   },
   {
     title: "Personal Portfolio",
