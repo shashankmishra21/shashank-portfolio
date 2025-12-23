@@ -25,7 +25,7 @@ export default function Resume() {
     { text: "Full-stack expertise", icon: CheckCircle },
     { text: "6+ production-ready projects", icon: CheckCircle },
     { text: "Strong DSA & problem-solving", icon: CheckCircle },
-    { text: "8.9 CPI academic excellence", icon: Star },
+    { text: "8.74 CPI academic excellence", icon: Star },
   ];
 
   return (

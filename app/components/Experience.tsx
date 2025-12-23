@@ -12,16 +12,16 @@ type ExperienceItem = {
 };
 
 const experiences: ExperienceItem[] = [
-  
+
   {
     title: "Software Engineer Intern",
     company: "Innoeed Systems",
     location: "Hybrid",
     period: "May – June 2025",
     description: [
-      "Built secure authentication and session handling using JWT & REST APIs, reducing authentication failures by 35%.",
-      "Developed a real-time booking module with Node.js & Express.js for faster, scalable performance.",
-      "Delivered 10+ reusable UI components to enhance frontend consistency and speed up development.",
+      "Developed 12+ full-stack RESTful APIs and integrated them with reusable React components for a healthcare platform serving 50+ clinics, ensuring smooth frontend–backend communication and consistent user experience across modules",
+      "Boosted appointment workflow speed by 30% via query optimization & API response tuning, reducing overall system latency",
+      "Worked across the complete SDLC, including requirements analysis, API development, debugging, and UI integration, while building 10+ frontend components that ensured seamless feature delivery and stable system behavior"
     ],
   },
   {
@@ -30,9 +30,9 @@ const experiences: ExperienceItem[] = [
     location: "On-Site",
     period: "May – June 2024",
     description: [
-      "CarSahayak features projected for 10,000+ users.",
-      "15+ Bootstrap components; -30% frontend cycle time.",
-      "MongoDB schema + indexes; -60% retrieval time.",
+      "Co-developed CarSahayak (e-commerce platform) targeting 10k+ users; built responsive UI using Bootstrap and integrated it with Node.js APIs",
+      "Refactored MongoDB schema and added targeted indexes, reducing query latency by 60% on high-traffic operations",
+      "Improved platform usability and interaction flow by collaborating with UI/UX teams, increasing session duration by 25%",
     ],
   },
 ];
@@ -153,9 +153,8 @@ export default function Experience() {
                     aria-hidden="true"
                   >
                     <div
-                      className={`relative w-4 h-4 rounded-full ${
-                        exp.highlight ? "bg-blue-500" : "bg-muted"
-                      } ring-4 ring-background`}
+                      className={`relative w-4 h-4 rounded-full ${exp.highlight ? "bg-blue-500" : "bg-muted"
+                        } ring-4 ring-background`}
                     >
                       {exp.highlight && (
                         <span className="absolute inset-0 rounded-full bg-blue-500/40 animate-ping" />
@@ -170,15 +169,13 @@ export default function Experience() {
                         variants={enterCard}
                         whileHover={{ y: -6, scale: 1.012 }}
                         transition={{ type: "spring", stiffness: 280, damping: 22 }}
-                        className={`relative w-full rounded-2xl border border-border bg-card/80 backdrop-blur-xl shadow-[0_10px_40px_-12px_rgba(59,130,246,0.28)] hover:shadow-[0_20px_60px_-12px_rgba(59,130,246,0.38)] overflow-hidden ${
-                          isLeft ? "md:mr-10" : "md:ml-10"
-                        }`}
+                        className={`relative w-full rounded-2xl border border-border bg-card/80 backdrop-blur-xl shadow-[0_10px_40px_-12px_rgba(59,130,246,0.28)] hover:shadow-[0_20px_60px_-12px_rgba(59,130,246,0.38)] overflow-hidden ${isLeft ? "md:mr-10" : "md:ml-10"
+                          }`}
                       >
                         {/* Connector pointer (md+) */}
                         <div
-                          className={`hidden md:block absolute top-7 ${
-                            isLeft ? "right-[-12px] border-l-[12px]" : "left-[-12px] border-r-[12px]"
-                          } border-y-[12px] border-y-transparent border-border`}
+                          className={`hidden md:block absolute top-7 ${isLeft ? "right-[-12px] border-l-[12px]" : "left-[-12px] border-r-[12px]"
+                            } border-y-[12px] border-y-transparent border-border`}
                           aria-hidden="true"
                         />
 
@@ -190,9 +187,8 @@ export default function Experience() {
                           {/* Title / company */}
                           <div className="flex flex-col md:items-start text-center md:text-left gap-1.5 md:gap-2 mb-2.5">
                             <h3
-                              className={`font-display font-bold leading-tight text-[15.5px] md:text-xl ${
-                                exp.highlight ? "text-blue-500" : "text-foreground"
-                              }`}
+                              className={`font-display font-bold leading-tight text-[15.5px] md:text-xl ${exp.highlight ? "text-blue-500" : "text-foreground"
+                                }`}
                             >
                               {exp.title}
                             </h3>

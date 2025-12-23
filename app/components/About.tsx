@@ -12,10 +12,10 @@ type Section = { title: string; icon: React.ElementType; items: Skill[] };
 export default function About() {
   const stats: Stat[] = useMemo(
     () => [
-      { label: "Years Experience", value: "1.5+", hint: "Hands on production work" },
+      { label: "Years Experience", value: "1.5+", hint: "Hands-on production work" },
       { label: "Projects Delivered", value: "5+", hint: "eLearning, Collaborative Tool, Portfolio" },
-      { label: "Internships", value: "2", hint: "Full-Stack" },
-      { label: "CGPA", value: "8.9", hint: "Consistently high" },
+      { label: "Internships", value: "2", hint: "SWE Intern" },
+      { label: "CPI", value: "8.74", hint: "Consistently high" },
     ],
     []
   );
