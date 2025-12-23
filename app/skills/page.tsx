@@ -47,8 +47,8 @@ export default function SkillsPage() {
         icon: Server,
         items: [
           { name: "Node.js", level: 85 },
-          { name: "Express.js", level: 80 },
-          { name: "Python", level: 75 },
+          { name: "Express.js", level: 90 },
+          { name: "Python", level: 80 },
           { name: "Django", level: 70 },
         ],
       },
@@ -225,7 +225,7 @@ export default function SkillsPage() {
                       </div>
                       <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
                         <motion.div
-                          className="h-2 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600"
+                          className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600"
                           initial={{ width: "0%" }}
                           whileInView={{ width: `${skill.level}%` }}
                           viewport={{ once: true }}

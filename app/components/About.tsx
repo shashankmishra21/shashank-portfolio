@@ -28,8 +28,8 @@ export default function About() {
         items: [
           { name: "React", level: 90 },
           { name: "Next.js", level: 85 },
-          { name: "TypeScript", level: 80 },
-          { name: "Tailwind CSS", level: 85 },
+          { name: "TypeScript", level: 85 },
+          { name: "Tailwind CSS", level: 95 },
         ],
       },
       {
@@ -37,8 +37,8 @@ export default function About() {
         icon: Server,
         items: [
           { name: "Node.js", level: 85 },
-          { name: "Express.js", level: 80 },
-          { name: "Python", level: 75 },
+          { name: "Express.js", level: 90 },
+          { name: "Python", level: 80 },
           { name: "Django", level: 70 },
         ],
       },
@@ -48,9 +48,8 @@ export default function About() {
         items: [
           { name: "MongoDB", level: 85 },
           { name: "PostgreSQL", level: 80 },
-          { name: "AWS -EC2", level: 70 },
-          
-          // { name: "Docker", level: 75 },
+          { name: "AWS", level: 70 },
+          { name: "Docker", level: 75 },
         ],
       },
       {
@@ -58,9 +57,9 @@ export default function About() {
         icon: Wrench,
         items: [
           { name: "Git", level: 90 },
-          { name: "CI/CD", level: 70 },
+          { name: "CI/CD", level: 75 },
           { name: "Linux", level: 80 },
-          // { name: "Nginx", level: 70 },
+          { name: "Nginx", level: 70 },
         ],
       },
     ],
@@ -233,7 +232,7 @@ export default function About() {
 
                       <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
                         <motion.div
-                          className="h-2 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600"
+                          className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600"
                           initial={{ width: "0%" }}
                           whileInView={{ width: `${skill.level}%` }}
                           viewport={{ once: true }}
