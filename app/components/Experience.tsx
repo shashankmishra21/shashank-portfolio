@@ -244,7 +244,7 @@ export default function Experience() {
       </div>
 
       {/* Reduced motion */}
-      <style>{`
+      <style jsx global>{`
         @media (prefers-reduced-motion: reduce) {
           .animate-ping {
             animation: none !important;
