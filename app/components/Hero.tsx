@@ -22,7 +22,7 @@ export default function Hero() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
   const roles = useMemo(
-    () => ["Full Stack Web Developer"],
+    () => ["Backend Engineer", "AI-Powered Systems", "Final Year CSE"],
     []
   );
 
