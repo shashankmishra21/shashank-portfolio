@@ -151,19 +151,19 @@ export default function About() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
                 <Target className="w-4 h-4 text-blue-500 mt-0.5" />
-                Build for scale — modular architecture, clean boundaries, long-term maintainability
+                Build for scale - modular architecture, clean boundaries, long-term maintainability
               </li>
               <li className="flex items-start gap-2">
                 <Layers className="w-4 h-4 text-indigo-500 mt-0.5" />
-                Performance first — optimized APIs, efficient queries, low-latency systems
+                Performance first - optimized APIs, efficient queries, low-latency systems
               </li>
               <li className="flex items-start gap-2">
                 <Gauge className="w-4 h-4 text-purple-500 mt-0.5" />
-                Engineering mindset — from system design to deployment & observability
+                Engineering mindset - from system design to deployment & observability
               </li>
               <li className="flex items-start gap-2">
                 <Rocket className="w-4 h-4 text-blue-400 mt-0.5" />
-                Solve hard problems — DSA-driven thinking, debugging, and optimization
+                Solve hard problems - DSA-driven thinking, debugging, and optimization
               </li>
             </ul>
           </motion.div>
