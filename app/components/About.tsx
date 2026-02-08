@@ -12,10 +12,10 @@ type Section = { title: string; icon: React.ElementType; items: Skill[] };
 export default function About() {
   const stats: Stat[] = useMemo(
     () => [
-      { label: "Years Experience", value: "1.5+", hint: "Hands-on production work" },
-      { label: "Projects Delivered", value: "5+", hint: "eLearning, Collaborative Tool, Portfolio" },
+      { label: "Years Experience", value: "1.5+", hint: "Hands-on Development Experience" },
+      { label: "Projects Delivered", value: "5+", hint: "Full-Stack & AI Systems" },
       { label: "Internships", value: "2", hint: "SWE Intern" },
-      { label: "CPI", value: "8.74", hint: "Consistently high" },
+      { label: "CPI", value: "8.74", hint: "Consistent Academic Performance" },
     ],
     []
   );
@@ -151,19 +151,19 @@ export default function About() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
                 <Target className="w-4 h-4 text-blue-500 mt-0.5" />
-                Ship with intent — measure impact, iterate quickly, and keep the bar high.
+                Build for scale — modular architecture, clean boundaries, long-term maintainability
               </li>
               <li className="flex items-start gap-2">
                 <Layers className="w-4 h-4 text-indigo-500 mt-0.5" />
-                Design for change — clean abstractions, clear boundaries, maintainable code.
+                Performance first — optimized APIs, efficient queries, low-latency systems
               </li>
               <li className="flex items-start gap-2">
                 <Gauge className="w-4 h-4 text-purple-500 mt-0.5" />
-                Performance first — fast APIs, optimized queries, smooth UI.
+                Engineering mindset — from system design to deployment & observability
               </li>
               <li className="flex items-start gap-2">
                 <Rocket className="w-4 h-4 text-blue-400 mt-0.5" />
-                Ownership mindset — from architecture to deployment and observability.
+                Solve hard problems — DSA-driven thinking, debugging, and optimization
               </li>
             </ul>
           </motion.div>
@@ -182,7 +182,7 @@ export default function About() {
             I focus on shipping with intent—clear architecture, thoughtful abstractions, and a bias for measurable impact.
           </p> */}
           <p className="mt-0 text-sm md:text-base text-muted-foreground">
-            I design and build reliable, end-to-end systems with a focus on clarity, efficiency, and impact. I enjoy turning complex problems into intuitive experiences, crafting thoughtful architectures, and delivering solutions that make a real difference. My approach balances precision with creativity, ensuring that every feature and interaction is purposeful and meaningful.
+            I design and build scalable backend and AI-powered systems with a strong focus on performance, clarity, and real-world impact. Experienced in developing end-to-end applications including enterprise RAG platforms, LLM-powered services, and distributed microservices using Node.js, TypeScript, PostgreSQL, and vector databases. I enjoy solving complex engineering problems, optimizing system performance, and building production-ready architectures that are reliable, efficient, and scalable.
           </p>
         </motion.div>
 
