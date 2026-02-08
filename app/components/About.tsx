@@ -7,7 +7,7 @@ const easeOut = [0.16, 1, 0.3, 1] as const;
 
 type Stat = { label: string; value: string; hint?: string };
 type Skill = { name: string; level: number };
-type Section = { title: string; icon: React.ElementType; items: Skill[] };
+type Section = { title: string; icon: React.ElementType; items: string[] };
 
 export default function About() {
   const stats: Stat[] = useMemo(
@@ -23,48 +23,72 @@ export default function About() {
   const sections: Section[] = useMemo(
     () => [
       {
-        title: "Frontend Engineering",
-        icon: Code2,
+        title: "Core Engineering",
+        icon: Target,
         items: [
-          { name: "React", level: 90 },
-          { name: "Next.js", level: 85 },
-          { name: "TypeScript", level: 85 },
-          { name: "Tailwind CSS", level: 95 },
+          "Backend Engineering",
+          "System Design",
+          "Problem Solving",
+          "Data Structures & Algorithms",
+          "Performance Optimization",
         ],
       },
       {
         title: "Backend & APIs",
         icon: Server,
         items: [
-          { name: "Node.js", level: 85 },
-          { name: "Express.js", level: 90 },
-          { name: "Python", level: 80 },
-          { name: "Django", level: 70 },
+          "Node.js",
+          "Express.js",
+          "TypeScript",
+          "REST API Design",
+          "Fast API",
+          "Authentication (JWT)",
+          "Microservices",
         ],
       },
       {
-        title: "Cloud & Databases",
+        title: "Databases",
         icon: Cloud,
         items: [
-          { name: "MongoDB", level: 85 },
-          { name: "PostgreSQL", level: 80 },
-          { name: "AWS", level: 70 },
-          { name: "Docker", level: 75 },
+          "PostgreSQL",
+          "MongoDB",
+          "Query Optimization",
+          "Indexing",
+          "Transactions",
         ],
       },
       {
-        title: "DevOps & Tooling",
+        title: "AI / RAG Systems",
+        icon: Rocket,
+        items: [
+          "RAG Architecture",
+          "LLM Integration",
+          "Vector DB (Qdrant)",
+          "Embeddings",
+          "Retrieval Pipelines",
+        ],
+      },
+      {
+        title: "DevOps & Systems",
         icon: Wrench,
         items: [
-          { name: "Git", level: 90 },
-          { name: "CI/CD", level: 75 },
-          { name: "Linux", level: 80 },
-          { name: "Nginx", level: 70 },
+          "Docker",
+          "Linux",
+          "Git & GitHub",
+          "CI/CD",
+          "Nginx",
+          "Deployment",
         ],
+      },
+      {
+        title: "Frontend",
+        icon: Code2,
+        items: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
       },
     ],
     []
   );
+
 
   const container = {
     hidden: { opacity: 0 },
@@ -210,39 +234,17 @@ export default function About() {
                 </span>
               </div>
 
-              <div className="space-y-4">
-                {sec.items.map((skill, i) => {
-                  const delay = sIndex * 0.05 + i * 0.05;
-                  return (
-                    <motion.div
-                      key={`${sec.title}-${skill.name}`}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.35, delay, ease: easeOut }}
-                    >
-                      <div className="flex items-center justify-between mb-1.5">
-                        <span className="text-sm md:text-base font-medium text-foreground">
-                          {skill.name}
-                        </span>
-                        <span className="text-[11px] md:text-xs text-muted-foreground">
-                          {skill.level}%
-                        </span>
-                      </div>
-
-                      <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
-                        <motion.div
-                          className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600"
-                          initial={{ width: "0%" }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.8, delay: delay + 0.15, ease: easeOut }}
-                        />
-                      </div>
-                    </motion.div>
-                  );
-                })}
+              <div className="flex flex-wrap gap-2">
+                {sec.items.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1.5 text-sm rounded-full bg-muted hover:bg-blue-500/10 border border-border transition-colors"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
+
             </motion.div>
           ))}
         </motion.div>

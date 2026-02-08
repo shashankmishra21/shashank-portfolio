@@ -7,7 +7,7 @@ type ExperienceItem = {
   company: string;
   location: string;
   period: string;
-  description: string[];
+  // description: string[];
   highlight?: boolean;
 };
 
@@ -18,22 +18,22 @@ const experiences: ExperienceItem[] = [
     company: "Innoeed Systems",
     location: "Hybrid",
     period: "May – June 2025",
-    description: [
-      "Developed 12+ full-stack RESTful APIs and integrated them with reusable React components for a healthcare platform serving 50+ clinics, ensuring smooth frontend–backend communication and consistent user experience across modules",
-      "Boosted appointment workflow speed by 30% via query optimization & API response tuning, reducing overall system latency",
-      "Worked across the complete SDLC, including requirements analysis, API development, debugging, and UI integration, while building 10+ frontend components that ensured seamless feature delivery and stable system behavior"
-    ],
+    // description: [
+    //   "Developed 12+ full-stack RESTful APIs and integrated them with reusable React components for a healthcare platform serving 50+ clinics, ensuring smooth frontend–backend communication and consistent user experience across modules",
+    //   "Boosted appointment workflow speed by 30% via query optimization & API response tuning, reducing overall system latency",
+    //   "Worked across the complete SDLC, including requirements analysis, API development, debugging, and UI integration, while building 10+ frontend components that ensured seamless feature delivery and stable system behavior"
+    // ],
   },
   {
     title: "Web Developer Intern",
     company: "Aon Digieon",
-    location: "On-Site",
+    location: "Hybrid",
     period: "May – June 2024",
-    description: [
-      "Co-developed CarSahayak (e-commerce platform) targeting 10k+ users; built responsive UI using Bootstrap and integrated it with Node.js APIs",
-      "Refactored MongoDB schema and added targeted indexes, reducing query latency by 60% on high-traffic operations",
-      "Improved platform usability and interaction flow by collaborating with UI/UX teams, increasing session duration by 25%",
-    ],
+    // description: [
+    //   "Co-developed CarSahayak (e-commerce platform) targeting 10k+ users; built responsive UI using Bootstrap and integrated it with Node.js APIs",
+    //   "Refactored MongoDB schema and added targeted indexes, reducing query latency by 60% on high-traffic operations",
+    //   "Improved platform usability and interaction flow by collaborating with UI/UX teams, increasing session duration by 25%",
+    // ],
   },
 ];
 
@@ -215,7 +215,7 @@ export default function Experience() {
                           <div className="h-px bg-border mb-3" />
 
                           {/* Impact bullets */}
-                          <ul className="space-y-2 md:space-y-2.5">
+                          {/* <ul className="space-y-2 md:space-y-2.5">
                             {exp.description.map((line, li) => (
                               <motion.li
                                 key={li}
@@ -231,7 +231,7 @@ export default function Experience() {
                                 </p>
                               </motion.li>
                             ))}
-                          </ul>
+                          </ul> */}
                         </motion.div>
                       </motion.div>
                     </div>

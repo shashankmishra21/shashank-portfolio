@@ -77,7 +77,7 @@ export default function Contact() {
             <span className="text-blue-500">Let’s build something exceptional</span>
           </h2>
           <p className="mt-2 text-xs sm:text-sm text-muted-foreground max-w-xl mx-auto">
-            Open to full‑time roles and collaborations. Share goals and timelines—happy to help. 
+            Open to full‑time roles and collaborations. Share goals and timelines—happy to help.
           </p>
         </motion.div>
 
