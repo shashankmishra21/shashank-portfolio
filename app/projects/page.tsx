@@ -6,7 +6,16 @@ import { motion, type Variants } from "framer-motion";
 
 const projects = [
   {
-    title: "BrainCache",
+    title: "AchievR- Digital Certification & Portfolio Platform",
+    img: "/AchievR.png",
+    live: "http://achievr-frontend-shashank-0121.s3-website.eu-north-1.amazonaws.com/",
+    code: "https://github.com/OmkarMishr/HackTitans-AchievR.git",
+    tech: ["React.js", "TailwindCSS", "MongoDB", "Node.js", "Express.js", "JWT", "REST APIs", "AWS (EC2, S3)"],
+    blurb:
+      "A full-stack achievement & portfolio management platform enabling students to track, verify, and showcase academic and extracurricular accomplishments in one place. Features secure authentication, role-based access (Student/Admin), certificate generation, and a dynamic public portfolio. Built with scalable architecture and optimized APIs for a clean, responsive, real-world experience.",
+  },
+  {
+    title: "BrainCache- Personal Knowledge & Productivity Platform",
     img: "/BrainCache-thumb.png",
     live: "https://braincache.vercel.app",
     code: "https://github.com/shashankmishra21/Frontend-Brain-App.git",
@@ -15,7 +24,7 @@ const projects = [
       "A full-stack productivity platform that enables users to collect, organize & share knowledge efficiently. Features real-time data sync, secure JWT-based authentication, advanced multi-tag filtering & shareable collections optimized for performance & scalability",
   },
   {
-    title: "CourseStack",
+    title: "CourseStack- eLearning Platform",
     img: "/coursestack-thumb.png",
     live: "https://coursestack-elearning.vercel.app",
     code: "https://github.com/shashankmishra21/CourseStack.git",
@@ -104,19 +113,15 @@ export default function ProjectsPage() {
               variants={card}
               className="group rounded-2xl overflow-hidden bg-card border border-border shadow-sm hover:shadow-xl transition-shadow"
             >
-              <div className="relative aspect-[16/8] overflow-hidden">
-                <motion.div variants={imageIn} className="w-full h-full">
-                  <Image
-                    src={p.img}
-                    alt={p.title}
-                    fill
-                    sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    priority={false}
-                  />
-                </motion.div>
-              </div>
-
+              <div className="relative aspect-[16/9] bg-black/40">
+  <Image
+    src={p.img}
+    alt={p.title}
+    fill
+    sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
+    className="object-contain group-hover:scale-105 transition-transform duration-500"
+  />
+</div>
               <div className="p-5">
                 <h3 className="text-lg md:text-xl font-display font-bold text-foreground">{p.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground line-clamp-7">{p.blurb}</p>
