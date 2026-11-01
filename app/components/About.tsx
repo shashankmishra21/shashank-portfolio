@@ -6,16 +6,15 @@ import { Code2, Server, Cloud, Wrench, Target, Rocket, Gauge, Layers } from "luc
 const easeOut = [0.16, 1, 0.3, 1] as const;
 
 type Stat = { label: string; value: string; hint?: string };
-type Skill = { name: string; level: number };
 type Section = { title: string; icon: React.ElementType; items: string[] };
 
 export default function About() {
   const stats: Stat[] = useMemo(
     () => [
-      { label: "Years Experience", value: "1.5+", hint: "Hands-on Development Experience" },
-      { label: "Projects Delivered", value: "5+", hint: "Full-Stack & AI Systems" },
-      { label: "Internships", value: "2", hint: "SWE Intern" },
-      { label: "CPI", value: "8.74", hint: "Consistent Academic Performance" },
+      { label: "Years Experience", value: "1.5+", hint: "Hands-on Software & Systems" },
+      { label: "Projects Delivered", value: "5+", hint: "Full-Stack & Distributed Systems" },
+      { label: "Roles / Internships", value: "2", hint: "SWE Intern & Engineer" },
+      { label: "CGPA", value: "8.80", hint: "Consistent Academic Performance" },
     ],
     []
   );
@@ -27,7 +26,7 @@ export default function About() {
         icon: Target,
         items: [
           "Backend Engineering",
-          "System Design",
+          "System Reliability",
           "Problem Solving",
           "Data Structures & Algorithms",
           "Performance Optimization",
@@ -41,13 +40,12 @@ export default function About() {
           "Express.js",
           "TypeScript",
           "REST API Design",
-          "Fast API",
-          "Authentication (JWT)",
+          "Authentication (JWT + RBAC)",
           "Microservices",
         ],
       },
       {
-        title: "Databases",
+        title: "Databases & Storage",
         icon: Cloud,
         items: [
           "PostgreSQL",
@@ -69,15 +67,15 @@ export default function About() {
         ],
       },
       {
-        title: "DevOps & Systems",
+        title: "Infrastructure & DevOps",
         icon: Wrench,
         items: [
           "Docker",
-          "Linux",
+          "Linux / Ubuntu",
           "Git & GitHub",
-          "CI/CD",
           "Nginx",
-          "Deployment",
+          "Logging & Monitoring",
+          "System Operations",
         ],
       },
       {
@@ -88,7 +86,6 @@ export default function About() {
     ],
     []
   );
-
 
   const container = {
     hidden: { opacity: 0 },
@@ -126,15 +123,15 @@ export default function About() {
           </p>
           <h2 className="mt-2 text-2xl md:text-5xl font-display font-extrabold tracking-tight">
             <span className="text-blue-500">
-              Builder of Scalable, Thoughtful Software
+              Builder of Scalable, Resilient Software
             </span>
           </h2>
           <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
-            Product‑minded full stack developer crafting clean, performant systems with precise attention to UX and reliability.
+            Product‑minded software engineer engineering clean, performant backend systems and infrastructure with precise attention to reliability.
           </p>
         </motion.div>
 
-        {/* Credibility and Principles (No image) */}
+        {/* Credibility and Principles */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
           {/* Credibility stats */}
           <motion.div
@@ -174,20 +171,20 @@ export default function About() {
             </h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
-                <Target className="w-4 h-4 text-blue-500 mt-0.5" />
-                Build for scale - modular architecture, clean boundaries, long-term maintainability
+                <Target className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                Build for scale — modular architecture, clean boundaries, and long-term maintainability
               </li>
               <li className="flex items-start gap-2">
-                <Layers className="w-4 h-4 text-indigo-500 mt-0.5" />
-                Performance first - optimized APIs, efficient queries, low-latency systems
+                <Layers className="w-4 h-4 text-indigo-500 mt-0.5 flex-shrink-0" />
+                Performance first — optimized APIs, efficient query indexing, and low-latency systems
               </li>
               <li className="flex items-start gap-2">
-                <Gauge className="w-4 h-4 text-purple-500 mt-0.5" />
-                Engineering mindset - from system design to deployment & observability
+                <Gauge className="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" />
+                Engineering rigor — from system design to production observability and infrastructure health
               </li>
               <li className="flex items-start gap-2">
-                <Rocket className="w-4 h-4 text-blue-400 mt-0.5" />
-                Solve hard problems - DSA-driven thinking, debugging, and optimization
+                <Rocket className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                Solve complex problems — DSA-driven thinking, systematic debugging, and optimization
               </li>
             </ul>
           </motion.div>
@@ -201,12 +198,8 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: easeOut }}
         >
-          {/* <p className="text-base md:text-lg text-foreground font-medium leading-relaxed">
-            I engineer reliable systems end‑to‑end: from clean APIs and efficient data models to polished, high‑performance interfaces.
-            I focus on shipping with intent—clear architecture, thoughtful abstractions, and a bias for measurable impact.
-          </p> */}
-          <p className="mt-0 text-sm md:text-base text-muted-foreground">
-            I design and build scalable backend and AI-powered systems with a strong focus on performance, clarity, and real-world impact. Experienced in developing end-to-end applications including enterprise RAG platforms, LLM-powered services, and distributed microservices using Node.js, TypeScript, PostgreSQL, and vector databases. I enjoy solving complex engineering problems, optimizing system performance, and building production-ready architectures that are reliable, efficient, and scalable.
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            I design and build scalable backend systems, robust APIs, and distributed architectures with a strong focus on high availability, performance, and operational reliability. Experienced in managing high-volume production infrastructure, maintaining service uptime, and developing end-to-end applications including enterprise RAG platforms and microservices using Node.js, TypeScript, and PostgreSQL. I thrive on solving intricate engineering challenges and building systems that scale seamlessly under load.
           </p>
         </motion.div>
 
@@ -218,7 +211,7 @@ export default function About() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {sections.map((sec, sIndex) => (
+          {sections.map((sec) => (
             <motion.div
               key={sec.title}
               variants={card}
@@ -244,7 +237,6 @@ export default function About() {
                   </span>
                 ))}
               </div>
-
             </motion.div>
           ))}
         </motion.div>
@@ -258,7 +250,7 @@ export default function About() {
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           <p className="text-xs md:text-sm text-muted-foreground">
-            Available for full‑time roles and impactful collaborations.
+            Available for core backend & software engineering roles with 0-day joining availability.
           </p>
         </motion.div>
       </div>

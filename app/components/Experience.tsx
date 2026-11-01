@@ -7,33 +7,33 @@ type ExperienceItem = {
   company: string;
   location: string;
   period: string;
-  // description: string[];
+  description: string[];
   highlight?: boolean;
 };
 
 const experiences: ExperienceItem[] = [
-
+  {
+    title: "Software Engineer – Production",
+    company: "Vespar Media",
+    location: "Pune, India",
+    period: "May 2026 – Present",
+    description: [
+      "Monitor and manage high-volume email campaign infrastructure, maintaining system reliability across deliverability protocols (SPF, DKIM, DMARC) and domain reputation metrics",
+      "Oversee automated campaign triggers, list segmentation logic, and data validation pipelines to ensure accurate scheduling and audience targeting",
+      "Track delivery rates, engagement metrics, and system logs to identify operational bottlenecks and improve overall campaign throughput",
+    ],
+    highlight: true,
+  },
   {
     title: "Software Engineer Intern",
     company: "Innoeed Systems",
     location: "Hybrid",
     period: "May – June 2025",
-    // description: [
-    //   "Developed 12+ full-stack RESTful APIs and integrated them with reusable React components for a healthcare platform serving 50+ clinics, ensuring smooth frontend–backend communication and consistent user experience across modules",
-    //   "Boosted appointment workflow speed by 30% via query optimization & API response tuning, reducing overall system latency",
-    //   "Worked across the complete SDLC, including requirements analysis, API development, debugging, and UI integration, while building 10+ frontend components that ensured seamless feature delivery and stable system behavior"
-    // ],
-  },
-  {
-    title: "Web Developer Intern",
-    company: "Aon Digieon",
-    location: "Hybrid",
-    period: "May – June 2024",
-    // description: [
-    //   "Co-developed CarSahayak (e-commerce platform) targeting 10k+ users; built responsive UI using Bootstrap and integrated it with Node.js APIs",
-    //   "Refactored MongoDB schema and added targeted indexes, reducing query latency by 60% on high-traffic operations",
-    //   "Improved platform usability and interaction flow by collaborating with UI/UX teams, increasing session duration by 25%",
-    // ],
+    description: [
+     "Improved p95 API response time by ∼30% at peak traffic by profiling bottlenecks and adding MongoDB indexes, reducing timeout-related support tickets",
+     "Extended JWT + RBAC middleware across new Node.js/Express endpoints, hardening authentication and reducing access-misconfiguration issues in internal tools",
+     "Maintained Postman collections and logging/monitoring for key services, enabling faster detection of breaking changes and production errors"
+   ],
   },
 ];
 
@@ -153,8 +153,9 @@ export default function Experience() {
                     aria-hidden="true"
                   >
                     <div
-                      className={`relative w-4 h-4 rounded-full ${exp.highlight ? "bg-blue-500" : "bg-muted"
-                        } ring-4 ring-background`}
+                      className={`relative w-4 h-4 rounded-full ${
+                        exp.highlight ? "bg-blue-500" : "bg-muted"
+                      } ring-4 ring-background`}
                     >
                       {exp.highlight && (
                         <span className="absolute inset-0 rounded-full bg-blue-500/40 animate-ping" />
@@ -169,13 +170,15 @@ export default function Experience() {
                         variants={enterCard}
                         whileHover={{ y: -6, scale: 1.012 }}
                         transition={{ type: "spring", stiffness: 280, damping: 22 }}
-                        className={`relative w-full rounded-2xl border border-border bg-card/80 backdrop-blur-xl shadow-[0_10px_40px_-12px_rgba(59,130,246,0.28)] hover:shadow-[0_20px_60px_-12px_rgba(59,130,246,0.38)] overflow-hidden ${isLeft ? "md:mr-10" : "md:ml-10"
-                          }`}
+                        className={`relative w-full rounded-2xl border border-border bg-card/85 backdrop-blur-xl shadow-[0_10px_40px_-12px_rgba(59,130,246,0.28)] hover:shadow-[0_20px_60px_-12px_rgba(59,130,246,0.38)] overflow-hidden ${
+                          isLeft ? "md:mr-10" : "md:ml-10"
+                        }`}
                       >
                         {/* Connector pointer (md+) */}
                         <div
-                          className={`hidden md:block absolute top-7 ${isLeft ? "right-[-12px] border-l-[12px]" : "left-[-12px] border-r-[12px]"
-                            } border-y-[12px] border-y-transparent border-border`}
+                          className={`hidden md:block absolute top-7 ${
+                            isLeft ? "right-[-12px] border-l-[12px]" : "left-[-12px] border-r-[12px]"
+                          } border-y-[12px] border-y-transparent border-border`}
                           aria-hidden="true"
                         />
 
@@ -187,8 +190,9 @@ export default function Experience() {
                           {/* Title / company */}
                           <div className="flex flex-col md:items-start text-center md:text-left gap-1.5 md:gap-2 mb-2.5">
                             <h3
-                              className={`font-display font-bold leading-tight text-[15.5px] md:text-xl ${exp.highlight ? "text-blue-500" : "text-foreground"
-                                }`}
+                              className={`font-display font-bold leading-tight text-[15.5px] md:text-xl ${
+                                exp.highlight ? "text-blue-500" : "text-foreground"
+                              }`}
                             >
                               {exp.title}
                             </h3>
@@ -215,7 +219,7 @@ export default function Experience() {
                           <div className="h-px bg-border mb-3" />
 
                           {/* Impact bullets */}
-                          {/* <ul className="space-y-2 md:space-y-2.5">
+                          <ul className="space-y-2 md:space-y-2.5">
                             {exp.description.map((line, li) => (
                               <motion.li
                                 key={li}
@@ -223,7 +227,7 @@ export default function Experience() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.4 }}
                                 transition={{ duration: 0.3, delay: li * 0.06, ease: easeOut }}
-                                className="flex items-start gap-2"
+                                className="flex items-start gap-2 text-left"
                               >
                                 <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
                                 <p className="text-[13px] md:text-[15px] text-muted-foreground leading-relaxed">
@@ -231,7 +235,7 @@ export default function Experience() {
                                 </p>
                               </motion.li>
                             ))}
-                          </ul> */}
+                          </ul>
                         </motion.div>
                       </motion.div>
                     </div>
